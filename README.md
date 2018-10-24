@@ -1,2 +1,4 @@
 # asxuexi
 asxuexi
+
+system.out
