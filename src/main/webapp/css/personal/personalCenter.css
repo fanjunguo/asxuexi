@@ -1,0 +1,180 @@
+/* 最外围容器 */
+.allcontainerPC {
+	width: 930px;
+	margin: 0 auto;
+	background: #FFF;
+	/* border: 1px solid #e5e5e5; */
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.top .row{
+	margin-top:15px;
+	background: #f5f5f5;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #e8e8e8;
+}
+.top .item8{
+	padding:0px;
+	padding-left: 25px;
+}
+.top .item2{
+	padding:0px;
+	text-align: right;
+}
+.top .item1{
+	padding:0px;
+	padding-right:5px;
+	text-align: right;
+}
+.topItem12 {
+	background: #f5f5f5;
+	height: 40px;
+	line-height: 40px;
+	/* margin-top: 25px; */
+	padding-left: 25px;
+	border: 1px solid #e8e8e8;
+}
+
+.topItem4 {
+	width: 308px;
+	text-align: center;
+	border-left: 1px solid #e8e8e8;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.row {
+	margin: 0px;
+	width: 930px;
+	border: 1px solid #e8e8e8;
+}
+
+.topContainer {
+	background: #f5f5f5;
+}
+
+.topContainer .topItem4 {
+	width: 309px;
+	height: 40px;
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	line-height: 40px;
+	text-align: center;
+	border: 0;
+}
+
+#dropdownMenuButton {
+	background: #f5f5f5;
+	color: black;
+	border: #f5f5f5;
+}
+
+.dropdown-item {
+	width: auto;
+}
+
+.courseRemind .single, .courseComment .single {
+	border-top: 0;
+}
+#orderBottom .row{
+	margin-top:8px;
+	border:1px solid #daf3ff;
+} 
+
+
+.orgName {
+	width: 930px;
+	padding-bottom: 10px;
+	background: #eaf8ff;
+	padding-top: 10px;
+	padding-left: 30px;
+	border-bottom:1px solid #daf3ff;
+}
+
+.courseContext {
+	padding:0;
+	width: 308px;
+	border-right: 1px solid #daf3ff;
+}
+
+.courseContext input {
+	float: left;
+	margin-top: 25px;
+	margin-left: 15px;
+}
+
+.courseContextAll .img {
+	width: 80px;
+	height: 80px;
+	float: left;
+	margin-top: 15px;
+}
+
+.courseContextAll .img img {
+	width: 80px;
+	height: 80px;
+}
+
+.courseContextText {
+	width: 210px;
+	float: left;
+	padding: 15px;
+	padding-bottom:5px;
+	padding-left:3px;
+	padding-right:3px;
+	text-align:left;
+}
+
+.courseContextText p {
+	word-wrap: break-word;
+	word-break: break-all;
+	OVERFLOW-y: auto;
+	margin: 0px;
+}
+
+.coursePrice {
+	width: 153px;
+	text-align: center;
+	padding-top: 15px;
+	border-right: 1px solid #daf3ff;
+}
+
+.tradingStatus {
+	width: 228px;
+	text-align: center;
+	padding-top: 15px;
+	border-right: 1px solid #daf3ff;
+}
+
+.courseOperate {
+	width: 228px;
+	text-align: center;
+	padding-top: 15px;
+}
+
+#payButton {
+	margin: 0 auto;
+	border-radius: 6px;
+	background: red;
+	color: white;
+	padding: 6px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.courseOperate a {
+	position: relative;
+	top: 5px;
+}
+
+.allDesCol {
+	text-align: center;
+	padding:0px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	background: #eaf8ff;
+}
+

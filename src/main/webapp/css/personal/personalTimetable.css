@@ -1,0 +1,235 @@
+@charset "UTF-8";
+
+#calendar {
+	display: flex;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+#calendar th, #calendar td {
+	border-color: transparent;
+	position: relative;
+}
+
+#calendar>.fc-toolbar {
+	flex: 1;
+	align-items: flex-start;
+	margin: 0;
+	padding-right: 10px;
+	position: relative;
+}
+
+#calendar .fc-left, #calendar .fc-center, #calendar .fc-right {
+	z-index: 1;
+}
+
+
+#calendar>.fc-view-container {
+	flex: 2;
+}
+
+#calendar .fc-head {
+	background-color: #f8f8f8;
+}
+
+#calendar .fc-day-grid-container {
+	overflow: auto !important;
+	height: 100% !important;
+}
+
+#calendar .fc-dayGrid-view .fc-body .fc-row {
+	min-height: auto;
+	height: 38px !important;
+}
+
+#calendar .fc-content-skeleton {
+	top: 9px;
+}
+
+#calendar .fc-day-header {
+	padding: 10px 0;
+}
+
+#calendar .fc-day-top {
+	cursor: pointer;
+	text-align: center;
+}
+
+#calendar .fc-day-top .fc-day-number {
+	float: none;
+}
+
+#calendar td.fc-today.fc-day {
+	background-color: #d9edf7;
+}
+
+#calendar .fc-highlight {
+	background-color: #6287d5;
+}
+
+#calendar td.fc-today.fc-day.fc-highlight {
+	background-color: #6287d5;
+}
+
+#calendar .fc-button-primary {
+	border-color: transparent;
+	background-color: transparent;
+	padding: 9px;
+}
+
+#calendar .fc-icon-chevron-left::before,
+#calendar .fc-icon-chevron-right::before {
+	color: #ccc;	
+}
+
+#calendar .fc-button-primary:focus {
+	box-shadow: 0 0 0 0 white;
+}
+
+#calendar .fc-toolbar h2 {
+	font-size: 16px;
+	color: #555;
+	letter-spacing: 1px;
+	line-height: 40px;
+}
+
+#calendar .has_course::before {
+	content: "";
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: red;
+	position: absolute;
+	left: 15px;
+	top: 5px;
+}
+
+.custom_container {
+	position: absolute;
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.custom_container .date_wrap {
+	color: #9d9d9d;
+	text-align: center;
+}
+
+.custom_container .button_wrap span{
+	cursor: pointer;
+}
+
+.custom_container .button_wrap span:hover {
+	color: #6287d5;
+}
+
+.custom_container.normal {
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.custom_container+.button_wrap{
+	position: absolute;
+	bottom: -35px;
+	left: -10px;
+	border: 1px solid #ccc;
+	width: 70px;
+	height: 25px;
+	cursor: pointer;
+}
+
+.custom_container+.button_wrap::before {
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-right: 2px solid #ccc;
+	border-top: 2px solid #ccc;
+}
+
+.normal .date_wrap {
+	padding-top: 50px;
+}
+
+.normal .selected_date {
+	font-size: 7em;
+}
+
+.normal .button_wrap {
+	padding-bottom: 10px;
+	color: #ccc;
+}
+
+.normal+.button_wrap::before {
+	transform: rotate(-45deg);
+	top: 10px;
+	left: 29px;
+}
+
+.custom_container.small {
+	justify-content: center;
+}
+
+.small .date_wrap {
+	padding: 48px 90px 0 90px;
+}
+
+.small .selected_date {
+	font-size: 18px;
+}
+
+.small .button_wrap {
+	padding-top: 55px;
+}
+
+.small+.button_wrap::before{
+	transform: rotate(135deg);
+	top: 5px;
+	left: 29px;
+}
+
+#timetable {
+	margin-top: 50px;
+}
+
+.timetable_row {
+	display: flex;
+	border: 1px solid #ccc;
+	padding: 20px;
+}
+
+.timetable_row:not(:last-child) {
+	margin-bottom: 15px;
+}
+
+.timetable_column {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.timetable_column:first-child {
+	flex: 2;
+}
+
+.timetable_column .course_name{
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.timetable_column>div:not(:last-child){
+	padding-bottom: 10px;
+}
+
+.timetable_column .chapter_name {
+	padding: 0 5px;
+}
+
+#timetable .notice {
+	padding: 30px;
+	font-size: 20px;
+	color: #555;
+	text-align: center;
+}

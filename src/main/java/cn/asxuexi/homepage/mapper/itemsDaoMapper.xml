@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.homepage.dao.ItemsDao">
+	<select id="listDataOfOrg" resultType="java.util.HashMap">
+		SELECT own_id, own_name, parent_id, level_type, img 
+		FROM dbo.homepage_item
+		WHERE level_type IN (1,2) 
+		AND content_type ='机构' 
+		AND city_id = #{cityId} ORDER BY order_number
+	</select>
+	<select id="listDataOfCourse" resultType="java.util.HashMap">
+		SELECT own_id, own_name, parent_id, level_type, img 
+		FROM dbo.homepage_item
+		WHERE level_type IN (1,2) 
+		AND content_type ='课程' 
+		AND city_id = #{cityId} ORDER BY order_number
+	</select>
+	<select id="listOrgs" resultType="java.util.HashMap">
+		SELECT dbo.homepage_item.own_id, dbo.homepage_item.parent_id, 
+		dbo.homepage_item.own_name, dbo.homepage_item.level_type, 
+		dbo.org.orgname, dbo.areas.MergerName, dbo.logo.name, dbo.org.orgid 
+		FROM  dbo.areas 
+		INNER JOIN dbo.homepage_item 
+		INNER JOIN dbo.org 
+		ON dbo.homepage_item.content_id = dbo.org.orgid 
+		ON dbo.areas.ID = dbo.org.localid 
+		INNER JOIN dbo.logo 
+		ON dbo.org.orgid = dbo.logo.org_id 
+		WHERE dbo.homepage_item.level_type = 3 
+		AND dbo.homepage_item.content_type ='机构' 
+		AND dbo.homepage_item.city_id= #{cityId}
+		ORDER BY dbo.org.order_weight  
+	</select>
+	<select id="listCourses" resultType="java.util.HashMap">
+		SELECT dbo.homepage_item.own_id, dbo.homepage_item.parent_id, 
+		dbo.homepage_item.own_name, dbo.homepage_item.level_type, 
+		dbo.course.coursename, dbo.sort.sort_name, dbo.course_img.img_name, 
+		dbo.org.orgname, dbo.org.orgid, dbo.course.courseid
+		FROM  dbo.course 
+		INNER JOIN dbo.homepage_item ON dbo.course.courseid = dbo.homepage_item.content_id 
+		INNER JOIN dbo.sort ON dbo.course.sort_id = dbo.sort.sort_id 
+		INNER JOIN dbo.course_img ON dbo.course.courseid = dbo.course_img.course_id 
+		INNER JOIN dbo.org ON dbo.course.org_id = dbo.org.orgid 
+		WHERE dbo.homepage_item.level_type = 3 
+		AND dbo.homepage_item.content_type ='课程' 
+		AND dbo.homepage_item.city_id= #{cityId}
+		AND dbo.course_img.img_order=1 
+		ORDER BY dbo.course.order_weight
+	</select>
+	<select id="listValidatedOrgId" resultType="java.lang.String">
+		<if test=" !orgIdList.isEmpty() ">
+			SELECT org_id FROM licence_authentication WHERE status = 1 
+			AND org_id in 
+			<foreach collection="orgIdList" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</select>
+	<select id="listPackages" resultType="java.util.HashMap">
+		SELECT course_id, package_name, package_price
+		FROM dbo.course_package
+		WHERE status = 1 AND course_id in
+		<foreach collection="courseIdList" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		ORDER BY package_price
+	</select>
+	
+	<!--根据一定的排序规则,随机查询出给定城市的课程  -->
+	<select id="getCourseOfRecommended" resultType="map">
+		SELECT 
+		<choose>
+			<when test="orderRule==1">
+				top 50
+			</when>
+			<otherwise>
+				TOP 8 
+			</otherwise>
+		</choose>
+		dbo.course.courseid AS courseId, dbo.course.coursename AS courseName, 
+			dbo.org.orgname AS orgName, dbo.org.orgid AS orgId, dbo.course_img.img_name AS imgUrl, 
+			dbo.course.gmt_create, MAX(dbo.course_package.package_price) AS maxPrice, 
+			MIN(dbo.course_package.package_price) AS minPrice
+		FROM  dbo.course INNER JOIN
+	        dbo.course_img ON dbo.course.courseid = dbo.course_img.course_id INNER JOIN
+	        dbo.course_package ON dbo.course.courseid = dbo.course_package.course_id INNER JOIN
+	        dbo.org ON dbo.course.org_id = dbo.org.orgid INNER JOIN
+	        dbo.areas on dbo.areas.id= dbo.org.localid
+		WHERE (dbo.course_img.img_order = 1) AND (dbo.areas.parentid = #{cityId}) and dbo.course.status=1 and dbo.org.status = 1
+		GROUP BY dbo.course.courseid, dbo.course.courseid, dbo.course.coursename, dbo.org.orgname,
+			dbo.org.orgid, dbo.course_img.img_name, dbo.course.gmt_create
+			
+		<choose>
+			<when test="orderRule==1">
+				ORDER BY dbo.course.gmt_create desc
+			</when>
+			<otherwise>
+				order by newid()
+			</otherwise>
+		</choose>
+			
+			
+		<!-- <if test="orderRule==1">
+			ORDER BY dbo.course.gmt_create desc
+		</if> 
+		<if test="orderRule==2">
+			order by newid()
+		</if>
+		<if test="orderRule==3">
+			order by newid()
+		</if>-->
+	</select>
+	
+	<select id="getTheLatestCourseOfRecommended" resultType="map">
+		select dbo.course.courseid AS courseId, dbo.course.coursename AS courseName, 
+			dbo.org.orgname AS orgName, dbo.org.orgid AS orgId, dbo.course_img.img_name AS imgUrl, 
+			dbo.course.gmt_create, MAX(dbo.course_package.package_price) AS maxPrice, 
+			MIN(dbo.course_package.package_price) AS minPrice 
+		from course INNER JOIN
+	        dbo.course_img ON dbo.course.courseid = dbo.course_img.course_id INNER JOIN
+	        dbo.course_package ON dbo.course.courseid = dbo.course_package.course_id INNER JOIN
+	        dbo.org ON dbo.course.org_id = dbo.org.orgid INNER JOIN
+	        dbo.areas on dbo.areas.id= dbo.org.localid
+		where org_id in ( select  distinct top 8 org_id from course order by org_id desc)
+			and (dbo.course_img.img_order = 1) AND (dbo.areas.parentid = #{cityId}) and dbo.course.status=1 and dbo.org.status = 1
+		GROUP BY dbo.course.courseid, dbo.course.courseid, dbo.course.coursename, dbo.org.orgname,
+			dbo.org.orgid, dbo.course_img.img_name, dbo.course.gmt_create
+		order by dbo.course.gmt_create desc
+	</select>
+	
+	<!--根据一定的排序规则,查询出给定城市的所有机构  -->
+	<select id="getOrgOfRecommended" resultType="map">
+		SELECT top 8 dbo.org.orgid, dbo.org.orgname, dbo.org.gmt_create, dbo.logo.name as img_name, dbo.areas.MergerName AS parentAddress, dbo.org.address AS childAddress
+		FROM  dbo.org INNER JOIN
+               dbo.logo ON dbo.org.orgid = dbo.logo.org_id INNER JOIN
+               dbo.areas ON dbo.org.localid = dbo.areas.ID
+		WHERE (dbo.org.status = 1)  and (dbo.areas.parentid)=#{cityId}
+		<if test="orderRule==1">
+			ORDER BY dbo.org.gmt_create desc
+		</if>
+		<if test="orderRule==2">
+			ORDER BY newid()
+		</if>
+		
+	</select>
+</mapper>

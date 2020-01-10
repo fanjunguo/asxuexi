@@ -1,0 +1,96 @@
+/*兼容性设置*/
+*{
+	margin: 0;
+	padding: 0;
+	outline: none;
+	color: gray;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+.lsession_container{
+	width: 1190px;
+	margin: 10px auto;
+	display: flex;
+}
+.lession_list, .lession_display{
+	display: inline-block;
+	border: 1px solid #ccc;
+}
+.lession_display{
+	width: 950px;
+	margin-left: 20px;
+	padding-left: 10px;
+}
+.lession_list{
+	width: 200px;
+    min-height: 500px;
+    max-height: 600px;
+}
+.sort_third{
+	height: 36px;
+    line-height: 36px;
+    border-bottom: 1px dashed #ccc;
+    padding-left: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+}
+.sort_third:after{
+	content: "";
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    right: 12px;
+    width: 5px;
+    height: 5px;
+    border-right: 1px solid gray;
+    border-top: 1px solid gray;
+    transform: rotate(45deg);
+}
+.sort_third:hover{
+	background: #e2e2e2;
+	color: #2daef9;;
+}
+.block_name{
+	height: 50px;
+    line-height: 50px;
+    background-color: #dedede;
+    color: #000;
+    font-size: 16px;
+    font-weight: bolder;
+    padding-left: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.courseImg{
+	width: 166px;
+	height: 111px;
+	border: 1px solid #ccc;
+	object-fit: contain;
+	cursor: pointer;
+}
+.courseName{
+	overflow-x: hidden;
+    white-space: nowrap;/* 文本不换行，这样超出一行的部分被截取 */
+    text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;/* 用于Opera浏览器 */
+    width:100%;/*适配IE浏览器 */
+    font-size: 16px;
+}
+
+.lession_item {
+    display: inline-block;
+    margin: 10px;
+}
+.coursePrice span {
+    font-size: 13px;
+    color: #2daef9;
+}
+.price{
+	margin-left: 5px;
+}
+.course_empty{
+	width: 200px;
+	margin: 10px auto;
+}

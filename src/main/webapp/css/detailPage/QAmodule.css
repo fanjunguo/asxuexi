@@ -1,0 +1,241 @@
+
+/**机构详情和课程详情-问答模块 通用css样式*/
+.showQuestionAndAnswer {
+	font-size: 20px;
+	line-height: 55px;
+}
+.questionAndAnswerTitle {
+    height: 50px;
+}
+.questions {
+	font-size: 14px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 9px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    background: #fff;
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+.questions:hover{
+	color:red;
+}
+
+.questionAndAnswer {
+	background: #fff;
+	border-radius: 10px;
+	border: solid 1px #e5e5e5;
+	padding: 3px;
+}
+
+.QAATable {
+	width: 100%;
+	color: #666666;
+}
+
+.QAATable table {
+	margin: 0 auto;
+	width: 80%;
+}
+
+.QAATable table tr td {
+	border: 1px dashed #e5e5e5;
+	border-bottom-width: thin;
+	border-right-style: none;
+	border-left-style: none;
+	border-top-style: none;
+}
+
+.QAATable table tr td:nth-child(1) {
+	width: 8%;
+}
+
+.QAATable table tr td:nth-child(2) {
+	width: 65%;
+	padding: 6px 0;
+}
+
+.QAATable table tr td:nth-child(3) {
+	width: 10%;
+	font-size: 12px;
+}
+
+.userImg img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.QAAPager {
+	width: 100%;
+	text-align: center;
+	margin-top: 12px;
+}
+
+.paginator {
+	display: inline-block;
+	white-space: nowrap;
+	line-height: 18px;
+	list-style: none;
+	width: 80%;
+	text-align: center;
+	 user-select:  none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-user-select:  none;
+	    -khtml-user-select:  none;
+	  /*早期浏览器*/
+	   
+}
+
+.paginator li {
+	display: inline;
+	vertical-align: top;
+	margin: 0 5px;
+}
+
+.page-link span, .previous span, .next span {
+	display: inline-block;
+	width: 27px;
+	height: 27px;
+	line-height: 27px;
+	min-width: 10px;
+	border: 1px solid #b8bdbd;
+	text-align: center;
+	text-decoration: none;
+	background: #F5F5F5;
+}
+.previous span ,.next span{
+	width: 53px;
+}
+.pagination-ellipsis span {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	min-width: 10px;
+	text-align: center;
+	text-decoration: none;
+	color: #999;
+}
+
+.page-link span:hover, .previous span:hover, .next span:hover {
+	color: #ff6662;
+	cursor: pointer;
+}
+
+.current span {
+	display: inline-block;
+	width: 27px;
+	height: 27px;
+	line-height: 27px;
+	min-width: 10px;
+	text-align: center;
+	text-decoration: none;
+	border: 1px solid #ff6662;
+	background: #ff6662;
+	color: #fff;
+}
+
+#questionsPanel {
+	z-index: 10;
+	position: absolute;
+	width: 100vw;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	display: none;
+}
+
+.contentPanel {
+	position: fixed;
+	top: 32vh;
+	left: 34vw;
+	background: #fff;
+	padding: 3px 5px;
+	height: 222px;
+	width:430px;
+}
+
+.headerPanel {
+	height: 35px;
+	font-size: 18px;
+	line-height: 35px;
+	padding-left: 5px;
+}
+
+.bodyPanel {
+	line-height: 40px;
+	padding: 0 4px;
+}
+
+.textarea {
+	height: 53px;
+	border: 1px solid #ddd;
+	margin: 0 auto;
+}
+
+.textarea textarea {
+	width: 100%;
+	height: 50px;
+	resize: none;
+	border: none;
+	outline: none;
+    font-size: 12px;
+    line-height: 130%;
+    padding:8px;
+}
+
+.footerPanel {
+	width: 100%;
+	margin: 10px auto;
+	text-align: center;
+}
+
+.footerPanel span {
+	color: #333;
+	display: inline-block;
+	width: 88px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-left: 10px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#ask{
+	border: 1px solid #e4393c;
+	background: red;
+	color: #fff;
+}
+.courseDateBegin{
+	margin-right: 3px;
+}
+.filter_words{
+	display: block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    color: red;
+}
+.userQuestion {
+    color: orange;
+}
+/* 默认上一页初始不显示 */
+.previous span{
+	visibility: hidden;
+}
+.no_question {
+    width: 200px;
+    margin: 10px auto;
+    font-size: 16px;
+}

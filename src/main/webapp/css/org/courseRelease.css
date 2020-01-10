@@ -1,0 +1,792 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src: url('../../img/icon/icomoon/icomoon.eot');
+	src: url('../../img/icon/icomoon/icomoon.eot?#iefix')
+		format('embedded-opentype'),
+		url('../../img/icon/icomoon/icomoon.woff') format('woff'),
+		url('../../img/icon/icomoon/icomoon.ttf') format('truetype'),
+		url('../../img/icon/icomoon/icomoon.svg#icomoon') format('svg');
+}
+
+@keyframes loading { 
+	0%{
+		opacity: 1
+	}
+	100%{	
+		opacity: 0
+	}
+}
+
+.loading{
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	top: 0;
+	left: -45px;
+}
+
+.loading-dot {
+	display: inline-block;
+	position: absolute;
+	height: 8px;
+	width: 8px;
+	opacity: 0;
+	border-radius: 50%;
+	background-color: #4b9cdb;
+	animation: loading 0.8s ease infinite;
+}
+
+.loading-dot-1 {
+	left: 0;
+	top: 50%;
+	animation-delay: .1s;
+}
+
+.loading-dot-2 {
+	top: 15%;
+	left: 15%;
+	animation-delay: .2s;
+}
+
+.loading-dot-3 {
+	left: 50%;
+	animation-delay: .3s;
+}
+
+.loading-dot-4 {
+	left: 85%;
+	top: 15%;
+	animation-delay: .4s;
+}
+
+.loading-dot-5 {
+	top: 50%;
+	left: 100%;
+	animation-delay: .5s;
+}
+
+.loading-dot-6 {
+	left: 85%;
+	top: 85%;
+	animation-delay: .6s;
+}
+
+.loading-dot-7 {
+	left: 50%;
+	top: 100%;
+	animation-delay: .7s;
+}
+
+.loading-dot-8 {
+	top: 85%;
+	left: 15%;
+	animation-delay: .8s;
+}
+
+body {
+	background-color: #EBEBEB;
+}
+
+#slogen {
+    color: #666;
+    font-size: 20px;
+    padding: 4px 20px;
+    align-self: flex-end;
+}
+
+.content{
+	width: 1190px;
+	margin: 0px auto;
+}
+
+.content>form, .content>div{
+	padding: 20px;
+	background: white;
+	margin: 15px 0;
+}
+
+sup {
+	color: #ec971f;
+	font-size: 12px;
+	padding: 0 5px;
+}
+
+.partial_title{
+	padding: 5px 0;
+}
+
+.partial_title .required{
+	color: red;
+	padding-right: 2px;
+}
+
+.partial_title .tips{
+	font-weight: 500;
+	font-size: 12px;
+	color: #949494;
+}
+
+.basic_info .form-group {
+	margin-bottom: 25px;
+}
+
+.basic_info .form-group .control-label {
+	text-align: center;
+}
+
+.basic_info .form-group label{
+	font-weight: 500;
+}
+
+.textbox.combo{
+	border-radius: 4px;
+	border-color: #ccc;
+}
+
+.textbox.combo input{
+	padding-left: 12px;
+}
+
+.sort_select, #charging_mode_container{
+	display: flex;
+}
+
+#charging_tip{
+	position: absolute;
+    font-weight: 600;
+    padding: 5px;
+    top: 3px;
+}
+
+#charging_mode_container>label:not(.error){
+	position: relative;
+	margin: 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	height: 34px;
+	width: 220px;
+	padding-left: 75px;
+	padding-top: 6px;
+	color: #909090;
+	cursor: pointer;
+	margin-right: 11px;
+}
+
+#charging_mode_container>label.selected {
+	color: white;
+}
+
+#charging_mode_container>label.selected::before {
+	content: "\ea10";
+	font-family: "icomoon";
+	font-size: 15px;
+	position: absolute;
+	bottom: 4px;
+	left: 35px;
+}
+
+#charging_mode_container .show_area{
+	line-height: 34px;
+}
+
+.show_area.course_period{
+	line-height: 34px;
+}
+
+#tip_icon{
+	font-weight: 600;
+	position: absolute;
+	top: 2px;
+	padding: 5px;
+}
+
+.course_peroid_tips{
+	height: 34px;
+	line-height: 34px;
+	color: #ec971f;
+}
+
+.pre_container{
+	display: none;
+}
+
+.pre_container .datepicker_container{
+	display: flex;
+	justify-content: space-between;
+}
+
+.pre_container .datepicker_container>div{
+	padding: 0 16px;
+	line-height: 34px;
+}
+
+.post_container {
+	display: none;
+}
+
+.post_container .datepicker_container{
+	display: none;
+	margin-top: 22px;
+}
+
+.post_container .datepicker_container>div{
+	display: flex;
+	justify-content: space-between;
+}
+
+.post_container .datepicker_container>div>div{
+	padding: 0 16px;
+	line-height: 34px;
+}
+
+.switchbutton{
+	border-radius: 4px;
+}
+
+.switchbutton .switchbutton-on{
+	color: #fff;
+	background-color: #5bc0de;
+}
+
+.switchbutton .switchbutton-off{
+	color: #5bc0de;
+}
+
+.course_begin, .course_end{
+	cursor: pointer;
+}
+
+.number_limit{
+	text-align: right;
+	color: #79c0f2;
+	position: absolute;
+	top: 8px;
+	right: 28px;
+}
+
+label.error{
+	font-size: 12px;
+	color: red;
+	font-weight: 500;
+}
+
+label.error[for=course_name]{
+	position: absolute;
+	top: 35px;
+}
+
+label.error[for=course_sort]{
+	position: absolute;
+	top: 35px;
+}
+
+label.error[for=charging_mode]{
+	position: absolute;
+	top: 35px;
+}
+
+label.error[for=course_teacher]{
+	position: absolute;
+	top: 35px;
+}
+
+label.error[for=course_description]{
+	position: absolute;
+	bottom: -30px;
+}
+
+label.error[for=pre_course_begin]{
+	position: absolute;
+	top: 35px;
+}
+
+label.error[for=pre_course_end]{
+	position: absolute;
+	top: 35px;
+	left: 465px;
+}
+
+label.error[for=post_course_begin]{
+	position: absolute;
+	top: 91px;
+}
+
+label.error[for=post_course_end]{
+	position: absolute;
+	top: 91px;
+	left: 465px;
+}
+
+label.error[for=package_name]{
+	position: absolute;
+}
+
+label.error[for=chapter_name]{
+	position: absolute;
+}
+
+label.error[for=chapter_date]{
+	position: absolute;
+}
+
+.pricing_package>label.error{
+	position: absolute;
+	top: 64px;
+	left: 90px;
+}
+
+.package_body input[name=package_name]+label.error{
+	position: absolute;
+}
+
+.picture_container>label.error{
+	position: absolute;
+	top: 5px;
+	left: 50px;
+}
+
+.pricing_package{
+	position: relative;
+}
+
+.package_group{
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
+}
+
+.package_head{
+	background-color: #f8f8f9;
+	padding: 8px 5px;
+}
+
+.package_body{
+	padding: 10px 5px;
+}
+
+.package_group .package_name{
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-right: 5px;
+}
+
+.package_head .package_name{
+	color: #1d96e8;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.package_head .package_name span{
+	font-size: 11px;
+	padding-top: 4px;
+	padding-left: 5px;
+}
+
+.package_group .course_length{
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.package_head .course_length{
+	color: #1d96e8;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.package_head .course_length span{
+	font-size: 11px;
+	padding-top: 4px;
+	padding-left: 5px;
+}
+
+.package_group .course_length .textbox{
+	border-radius: 4px;
+}
+
+.package_group .package_price{
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.package_head .package_price{
+	color: #1d96e8;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.package_head .package_price span{
+	font-size: 11px;
+	padding-top: 4px;
+	padding-left: 5px;
+}
+
+.package_group .package_price .textbox{
+	border-radius: 4px;
+}
+
+.package_group .package_action{
+	width: 20%;
+	color: #1d96e8;
+}
+
+.package_group .package_action .package_delete,
+.package_group .package_action .package_edit{
+	font-family: "icomoon";
+	line-height: 34px;
+	color: #cbcbcb;
+	cursor: pointer;
+	margin-right: 15px;
+}
+
+.package_group .package_action .package_delete:hover{
+	color: #d9534f;
+}
+
+.package_group .package_action .package_edit:hover{
+	color: #1d96e8;
+}
+
+.package_group .package_add{
+	cursor: pointer;
+	width: 100%;
+	height: 34px;
+	border: 1px solid #f6f3f3;
+	border-radius: 4px;
+	background: #f8f8f9;
+	line-height: 34px;
+	text-align: center;
+	color: #cbcbcb;
+}
+
+.package_group .package_add:hover{
+	background: #f8f8f9;
+	border-color: #1d96e8;
+	color: #1d96e8;
+}
+
+.picture_container, .video_container{
+	position: relative;
+	display: flex;
+	padding: 25px 10px 10px 10px;
+	background: #f8f8f9;
+	margin-bottom: 10px;
+	border-radius: 4px;
+}
+
+.picture_container::before{
+	content: "图片";
+	position: absolute;
+	top: 2px;
+}
+
+.video_container::before{
+	content: "视频";
+	position: absolute;
+	top: 2px;
+}
+
+.picture_group, .video_group{
+	position: relative;
+	width: 120px;
+	height: 120px;
+	border: 1px dashed #ccc;
+	border-radius: 4px;
+	padding: 5px;
+	cursor: pointer;
+	margin: 10px 20px;
+}
+
+.picture_group:hover, .video_group:hover{
+	border-color: #1d96e8;
+}
+
+.picture_group img, .video_group img{
+	width: 100%;
+	height: 100%;
+	object-fit:contain;
+}
+
+.video_group video{
+	width: 100%;
+	height: 100%;
+}
+
+.picture_bar, .video_bar{
+	position: absolute;
+	width: 120px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#picture_1_bar, #video_1_bar{
+	top: 35px;
+	left: 30px;
+}
+
+#picture_2_bar{
+	top: 35px;
+	left: 190px;
+}
+
+#picture_3_bar{
+	top: 35px;
+	left: 350px;
+}
+
+#picture_4_bar{
+	top: 35px;
+	left: 510px;
+}
+
+.picture_bar span, .picture_bar div, .video_bar div, .video_bar span{
+	cursor: pointer;
+	font-family: "icomoon";
+	color: transparent;
+	padding: 0 5px;
+}
+
+.picture_bar span, .video_bar span{
+	display: none;
+}
+
+.picture_bar span.usable, .video_bar span.usable{
+	display: block;
+}
+
+.picture_bar span.usable:hover, .video_bar span.usable:hover{
+	color: #d9534f;
+}
+
+.picture_group:hover+.picture_bar, .picture_bar:hover, 
+	.video_group:hover+.video_bar, .video_bar:hover{
+	background: rgba(51,51,51,.3);
+}
+
+.picture_bar:hover span, .picture_bar:hover div, 
+.video_bar:hover span, .video_bar:hover div {
+	color: white;
+}
+
+.picture_group:hover+.picture_bar span, .picture_group:hover+.picture_bar div,
+.video_group:hover+.video_bar span, .video_group:hover+.video_bar div{
+	color: white;
+}
+
+.table_group {
+	display: flex;
+	padding: 10px 20px;
+}
+
+.chapter_number {
+	flex: 1;
+	text-align: center;
+	font-size: 18px;
+	line-height: 50px;
+}
+
+.chapter_content {
+	flex: 2;
+	text-align: left;
+}
+
+.chapter_name {
+	font-weight: bold;
+	line-height: 25px;
+}
+
+.chapter_time {
+	color: #666;
+	line-height: 25px;
+}
+
+.chapter_datetime, .chapter_length{
+	padding-right: 5px;
+}
+
+.chapter_datetime span{
+	padding-right: 5px;
+}
+
+.table_action {
+	flex: 1;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.chapter_delete{
+	display: none;
+}
+
+.course_timetable .table_body:nth-last-child(2) .chapter_delete{
+	display: block;
+}
+
+.chapter_edit, .chapter_delete{
+	font-family: "icomoon";
+	color: #cbcbcb;
+	cursor: pointer;
+	margin-right: 15px;
+}
+
+.chapter_edit:hover{
+	color: #1d96e8;
+}
+
+.chapter_delete:hover{
+	color: #d9534f;
+}
+
+.chapter_add{
+	cursor: pointer;
+	width: 100%;
+	height: 34px;
+	border: 1px solid #f6f3f3;
+	border-radius: 4px;
+	background: #f8f8f9;
+	line-height: 34px;
+	text-align: center;
+	color: #cbcbcb;
+}
+
+.chapter_add:hover{
+	background: #f8f8f9;
+	border-color: #1d96e8;
+	color: #1d96e8;
+}
+
+#login_modal .modal-dialog {
+	margin-top: 250px;
+}
+
+.login_content{
+	font-family: "icomoon";
+	display: flex;
+	padding: 10px 20px;
+}
+
+.login_content span{
+	color: orange;
+	font-size: 20px;
+}
+
+.login_content p{
+	margin: 0;
+	line-height: 25px;
+	padding: 0 10px;
+	font-size: 16px;
+}
+
+.login_buttons{
+	display: flex;
+	justify-content: flex-end;
+}
+
+#footer {
+	margin-bottom: 70px;
+}
+
+#release_alert{
+	width: 100%;
+	position: fixed;
+	bottom: 55px;
+	z-index: 1000;
+}
+
+.float_button_container{
+	padding: 20px;
+	position: fixed;
+	bottom: 0;
+	background: white;
+	width: 100%;
+	z-index: 1000;
+	border-top: 2px solid #1d96e8;
+	display: flex;
+	justify-content: center;
+}
+
+.float_button_container > span {
+	line-height: 34px;
+}
+
+.float_button_container .btn-primary {
+	position: relative;
+	margin: 0 100px;
+}
+
+.chapter_container, .package_container{
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.chapter_container>label{
+	align-self: center;
+	font-size: 18px;
+	letter-spacing: 2px;
+}
+
+#chapter_form .form-group, #package_form .form-group{
+	display: flex;
+	margin-bottom: 25px;
+}
+
+#chapter_form .form-group>label, #package_form .form-group>label{
+	flex: 0 0 20%;
+	text-align: center;
+	align-self: center;
+	margin: 0;
+	font-weight: 500;
+}
+
+#chapter_form .form-group>div, #package_form .form-group>div{
+	flex: 0 0 75%;
+	position: relative;
+}
+
+#chapter_name+.number_limit, #package_name+.number_limit,
+#chapter_name+.error+.number_limit, #package_name+.error+.number_limit{
+	right: 12px;
+}
+
+#chapter_begin+.spinner, #chapter_end+.spinner, #chapter_length+.spinner,
+#package_price+.spinner, #course_length+.spinner{
+	border-radius: 4px;
+}
+
+.chapter_buttons, .package_buttons{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.chapter_buttons button, .package_buttons button{
+	margin-left: 10px;
+}
+
+.imageManager_container .input_panel{
+	position: fixed;
+}
+
+#jump_modal .modal-dialog{
+	margin-top: 250px;
+}
+
+#jump_modal .jump_content{
+	font-family: "icomoon";
+	font-size: 20px;
+	text-align: center;
+}

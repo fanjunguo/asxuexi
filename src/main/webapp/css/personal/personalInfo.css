@@ -1,0 +1,492 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'icomoon';
+	src: url('../img/icon/icomoon/icomoon.eot');
+	src: url('../img/icon/icomoon/icomoon.eot?#iefix')
+		format('embedded-opentype'), url('../img/icon/icomoon/icomoon.woff')
+		format('woff'), url('../img/icon/icomoon/icomoon.ttf')
+		format('truetype'), url('../img/icon/icomoon/icomoon.svg#icomoon')
+		format('svg');
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+th {
+	text-align: center;
+}
+
+.tableEditInformation th {
+	text-align: left;
+}
+
+.personal_info_table tr {
+	height: 49px;
+}
+
+#radio2 {
+	margin-left: 12px;
+}
+
+#radio2, #radio1 {
+	margin-right: 3px;
+}
+
+#context {
+	width: 900px;
+	margin: 0 auto;
+}
+
+#essentialInformation {
+	width: 100%;
+	height: auto;
+	padding: 5px;
+}
+
+.titleDiv {
+	height: 40px;
+	color: #000;
+	background-color: #e8e8e8;
+	font-size: 20px;
+	padding: 0 30px;
+	line-height: 40px;
+}
+
+.titleDiva {
+	float: left;
+}
+
+.edit_btn {
+	float: right;
+	color: gray;
+	background: #fff;
+	margin-left: 10px;
+	cursor: pointer;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 5px;
+	border-radius: 4px;
+	padding: 0px 12px;
+	font-size: 15px;
+}
+
+.edit_btn:hover {
+	color: red;
+}
+
+.tableShowInformation {
+	width: 100%;
+}
+
+.orgLogoImg {
+	padding-left: 140px;
+}
+
+#editLogoImg {
+	display: block;
+}
+
+.webuploader-pick {
+	width: 170px !important;
+	padding: 7px;
+	background: #edeeee;
+	color: #676161;
+}
+
+.webuploader-pick-hover {
+	color: red;
+}
+
+.tableShowInformation td {
+	width: 300px;
+	height: 40px;
+}
+
+.tableShowInformation th {
+	width: 90px;
+	font-weight: inherit;
+}
+
+.form-control {
+	display: inline !important;
+}
+
+.controlWidth {
+	width: 120px !important;
+}
+
+#showAuthentication {
+	width: 100%;
+	padding: 0 10px;
+}
+
+.block {
+	margin: 8px auto;
+	width: 900px;
+	border-bottom: 1px solid #e4e0e0;
+	height: 60px;
+	padding-top: 1px;
+}
+
+.stripShow {
+	height: 40px;
+	font-size: 18px;
+	margin: 10px 20px;
+}
+
+.infoLeft, .infoCenter, .infoRight {
+	display: inline-block;
+}
+
+.infoLeft {
+	float: left;
+	margin: 0 20px;
+}
+
+.infoCenter {
+	float: left;
+	margin: 0 20px;
+	height: 32px;
+	line-height: 32px;
+}
+
+.infoRight {
+	float: right;
+	margin: 0 20px;
+	cursor: pointer;
+	border: 1px solid #ccc;
+	padding: 4px 10px;
+	font-size: 15px;
+	border-radius: 4px;
+	background: #fff;
+	color: #7d7979;
+}
+
+.infoRight:hover {
+	color: red;
+}
+
+.stripHide {
+	display: none;
+	margin: 10px auto;
+	width: 430px;
+	height: 356px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	z-index: 90;
+	position: fixed;
+	left: calc((100vw - 430px)/2);
+	top: calc((100vh - 356px)/2);
+}
+
+.window_header {
+	height: 40px;
+	border-bottom: 1px solid #e5e5e5;
+	line-height: 40px;
+	padding-left: 10px;
+	font-size: 16px;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+
+#validatePhone {
+	width: 185px;
+}
+
+.third_block {
+	height: 100px;
+}
+
+.stripHide table {
+	margin: auto;
+}
+
+.stripHide table tr {
+	height: 60px;
+	color: #473c2c99;
+	font-family: 宋体;
+}
+
+.stripHide table tr th {
+	text-align: right;
+	margin-right: 5px;
+}
+
+.btnTable {
+	text-align: center;
+}
+
+.btn-info {
+	border-radius: 4px;
+	background: red;
+	border-color: red;
+	margin-bottom: 2px;
+}
+
+.btn-info:hover {
+	background: #eb2121 !important;
+	border-color: #eb2121 !important;
+}
+
+.thirdShow img {
+	height: 40px;
+}
+
+.hidebody {
+	width: 100%;
+    height: 100%;
+    z-index: 100;
+    position: fixed;
+    top: 0px;
+    background: #2b181833;
+}
+
+.hidePanel {
+	width: 200px;
+	height: 50px;
+	vertical-align: middle;
+	position: absolute;
+	top: 50vh;
+	left: 45vw;
+	background: #fff;
+	text-align: center;
+	line-height: 50px;
+}
+
+#editInformation {
+	padding-left: 45px;
+}
+
+#updatePassword {
+	cursor: pointer;
+	background-color: #e60b4a !important;
+	border-color: #a0a0a1 !important;
+}
+
+.updatePassword:hover, .updatePhone:hover, .updateEmail:hover {
+	background: #fa1a3a;
+	border-color: #fa1a3a;
+	color: #fff;
+}
+
+.clear, .updatePassword, .updatePhone, .updateEmail {
+	padding: 6px 28px;
+	margin: 0px 20px;
+	border: 1px solid #ccc;
+}
+
+.unCursor {
+	cursor: not-allowed;
+	background-color: #fff;
+	border-color: #d3d4d4;
+	color: #000;
+}
+
+.clear {
+	cursor: pointer;
+	color: #000;
+	background-color: #fff;
+	border-color: #d3d4d4;
+}
+
+.clear:hover {
+	color: #000;
+	background-color: #fff;
+	border-color: #d3d4d4;
+}
+
+.footer_btn {
+	margin: 10px auto;
+	width: 258px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.tip_img {
+	height: 28px !important;
+}
+
+.haveNoDate {
+	color: #ff001d;
+	font-size: 14px;
+}
+
+#updatePhone {
+	cursor: pointer;
+	background-color: #e60b4a !important;
+	border-color: #a0a0a1 !important;
+}
+
+#updateEmail {
+	cursor: pointer;
+	background-color: #e60b4a !important;
+	border-color: #a0a0a1 !important;
+}
+
+#editlogo {
+	width: 170px;
+	height: 170px;
+	background: aliceblue;
+	margin: 10px 0;
+}
+
+#provinceAddress, #cityAddress, #countyAddress {
+	width: 30%;
+}
+
+.tableShowInformation {
+	width: 77%;
+}
+
+.tableShowInformation th {
+	text-align: right;
+}
+
+.tableShowInformation  td {
+	padding-left: 20px;
+}
+/* 遮罩层样式 */
+.background {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: #ccc;
+	opacity: 0.5;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+.third_container {
+	display: inline-block;
+	margin-right: 32px;
+}
+
+.first_column {
+	width: 60px;
+	height: 26px;
+	font-size: 16px;
+	font-weight: bolder;
+}
+
+.third_table {
+	text-align: center;
+}
+
+.third_btn {
+	border: 1px solid #ccc;
+	width: 72px;
+	margin: 0 auto;
+	font-size: 14px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.third_btn:hover {
+	background: #f5f5f5;
+}
+
+.second_column {
+	font-size: 14px;
+	text-align: left;
+}
+
+.line {
+	width: 290px;
+	margin: 0 auto;
+	height: 80px;
+}
+
+input.error {
+	border-color: red;
+}
+
+label.error {
+	color: #ff4040;
+	font-weight: normal;
+}
+
+#phone_validate .line, #phone_verification_code .line,
+	#email_verification_code .line {
+	position: relative;
+}
+
+#phone_validate label, #phone_verification_code label,
+	#email_verification_code label {
+	position: absolute;
+	left: 0px;
+	top: 53px;
+}
+
+input {
+	outline: none;
+}
+
+div.countSeconds {
+	border: 1px solid red;
+	color: #fff;
+	background: red;
+	width: 96px;
+}
+
+.countSeconds:hover {
+	color: #fff;
+}
+
+span.wrong_message.error {
+	margin-top: 18px;
+	display: block;
+	color: red;
+}
+
+input#validateEmail {
+	width: 155px;
+}
+
+div.sendEmail {
+	margin-bottom: 2px;
+	width: 124px;
+	opacity: 1!important;
+}
+
+.disabled {
+	cursor: not-allowed;
+}
+
+.input_button {
+	width: 100%;
+	height: 36px;
+	border-radius: 4px;
+	border: 1px solid #FC0E2A;
+	font-size: 18px;
+	color: white;
+	background-color: #FC0E2A;
+}
+
+.notification {
+	font-family: "icomoon";
+	font-size: 25px;
+	color: #FC0E2A;
+}
+
+.modal a:hover {
+	text-decoration: none;
+}
+
+.modal-dialog {
+	margin-top: 250px;
+	width: 350px;
+	text-align: center;
+}
+
+.message_content {
+	padding: 10px 0;
+}

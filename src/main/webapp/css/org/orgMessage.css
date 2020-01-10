@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.tab_container {
+	display: flex;
+	border-bottom: 1px solid #eee;
+}
+
+.tab_container .tab {
+	cursor: pointer;
+	font-size: 20px;
+	padding: 5px 10px;
+	border-bottom: 2px solid transparent;
+}
+
+.tab_container .tab.selected, .tab_container .tab:hover {
+	color: red;
+	border-bottom-color: red;
+}
+
+.button_group {
+	padding: 10px;
+	display: flex;
+}
+
+.button_group .read, .button_group .delete {
+	line-height: 28px;
+	padding: 0 10px;
+	margin: 0 5px;
+}
+
+.message_title {
+	position: relative;
+	padding: 13px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.message_title.unread::before {
+	position: absolute;
+	content: "new~";
+	top: -5px;
+	font-size: 10px;
+	font-weight: 5;
+	left: 0;
+	color: red;
+}
+
+.message_content {
+	display: none;
+	padding: 0px 10px 10px 10px;
+	line-height: 20px;
+}
+
+#warn_modal .modal-dialog {
+	margin-top: 250px;
+}
+
+.warn_content {
+	padding: 10px;
+}
+
+.warn_buttons {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.warn_buttons button {
+	margin-left: 10px;
+}
+
+#notice_modal .modal-dialog {
+	margin-top: 250px;
+}
+
+.notice_content {
+	padding: 10px;
+	padding-bottom: 0;
+}

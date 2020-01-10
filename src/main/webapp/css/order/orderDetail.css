@@ -1,0 +1,124 @@
+*{
+	margin:0;
+	padding: 0;
+}
+
+h5{
+	font: normal 18px/20px "microsoft yahei",tahoma,arial,sans-serif;
+	margin-bottom: 20px;
+	margin-left: -10px;
+}
+
+.bg{
+	width:1000px;
+	margin:22px auto;
+}
+
+.info_header,.courseInfo,.orgInfo,.orderInfo,.studentInfo,.cancel_rule{
+	padding: 0 30px;
+	border: 1px solid #ccc;
+	margin-top: -1px;
+	font-size: 13px;
+}
+
+.courseInfo{
+	padding-top: 12px;
+}
+
+.info_header{
+	height: 60px;
+    line-height: 60px;
+    background: #eee;
+}
+
+.info_header span{
+	display: inline-block;
+	margin-right: 50px;
+}
+
+.row1{
+	display: inline-block;
+    margin-right: 50px;
+    width: 300px;
+    margin:0px 50px 15px 0px;
+}
+
+.row2{
+	display: inline-block;
+    margin-right: 50px;
+    width: 130px;
+}
+
+.row3{
+	display: inline-block;
+    margin-right: 50px;
+    width: 170px;
+}
+.row4{
+	display: inline-block;
+}
+
+.frame{
+	width: 110px;
+}
+
+.frame span{
+	float: right;
+}
+
+.red{
+	color: red;
+}
+
+.error_message{
+	width: 100%;
+	text-align: center;
+	font-size: 15px;
+}
+
+.courseInfo a{
+	color: #000;
+}
+.courseInfo a:hover{
+	text-decoration: none;
+}
+.span_btn{
+	border: 1px solid #fff;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    background: #fff;
+    border-style: outset;
+    margin-right: 10px!important;
+}
+.span_btn:hover{
+	color:blue;
+}
+.span_btn:active {
+	border-style:inset;
+}
+
+
+.alert.alert-warning{
+	display: none;
+	width: 800px;
+    position: absolute;
+    top: 160px;
+    left: calc((100vw - 800px)/2);
+}
+
+.modal-dialog {
+    width: 350px;
+    margin: 140px auto;
+ }
+
+.modal-body{
+	font-size: 12px;
+	padding-left: 30px;
+}
+
+input[type="radio"] {
+    margin-right: 3px;
+}

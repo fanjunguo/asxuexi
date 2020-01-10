@@ -1,0 +1,219 @@
+/* 个人中心-我的订单
+	by 范俊国
+	2019.6.7
+ */
+*{
+	margin: 0;
+	padding:0;
+}
+.table_container{
+	margin-right: 8px;
+	margin-bottom: 22px;
+}
+
+.table_container thead{
+	text-align: center;
+	font-size: 12px;
+}
+.table_container thead,.order_number{
+	background: #eee;
+	font-size: 12px;
+}
+
+.table_container tbody,.order_number{
+	border: 1px solid #e5e5e5;
+}
+
+.order_message td{
+	padding: 14px;
+	font-size: 12px;
+	border-right: 1px solid #e5e5e5;
+	text-align: center;
+}
+.space_row{
+	height: 20px;
+}
+
+.course_name{
+	width: 400px;
+	font-size:13px
+}
+.thead1{
+	width: 400px;
+}
+
+.td1 div{
+	text-align: left;
+}
+
+
+.order_message p{
+	margin: 0px;
+}
+
+.operation{
+	width: 200px;
+}
+
+thead td,.order_number td{
+	line-height: 27px;
+}
+
+.order_id,.order_date{
+	margin-right: 50px;
+	width: 140px;
+    display: inline-block;
+}
+
+.student_name{
+	width: 110px;
+	text-align: center;
+}
+
+.price{
+	width: 130px;
+	text-align: center;
+}
+
+.price>span:nth-child(3){
+	border-top: 1px solid #e5e5e5;
+    padding-top: 4px;
+    display: block;
+}
+
+.order_status{
+	width: 120px;
+	text-align: center;
+}
+
+.table_container a{
+	color: #000;
+	cursor:pointer;
+}
+.table_container a:hover{
+	color: red;
+	text-decoration: none;
+}
+
+.course_img{
+	width: 50px;
+	height: 50px;
+	object-fit: contain;
+	float:left;
+	border: 1px solid #e5e5e5;
+	margin-right: 5px;
+}
+
+.no_data{
+	text-align: center;
+    font-size: 15px;
+    padding-top: 10px;
+    color: #989898;
+}
+
+.alert.alert-warning{
+	display: none;
+	width: 800px;
+    position: absolute;
+    top: 160px;
+    left: calc((100vw - 800px)/2);
+}
+
+.modal-dialog {
+    width: 350px;
+    margin: 140px auto;
+ }
+
+.modal-body{
+	font-size: 12px;
+	padding-left: 30px;
+}
+
+input[type="radio"] {
+    margin-right: 3px;
+}
+
+.bill_message{
+	border: 1px solid #e5e5e5;
+	font-size: 12px;
+	padding-left: 10px;
+	height: 24px;
+}
+
+.bill_message a {
+    color: #ff0000;
+    text-decoration: underline;
+    font-family: Arial,"Microsoft Yahei","\5FAE\8F6F\96C5\9ED1";
+	font-weight: 300;
+	margin-left: 10px;
+}
+.bill_message a:hover{
+	color: #ff0000;
+	text-decoration: underline;
+}
+
+.pull_container{
+    border: 1px solid #eee;
+    width: 60px;
+    height: 16px;
+    display: inline-block;
+    left:400px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    top: 19px;
+    line-height: 12px;
+}
+
+.pull_container img{
+	width:12px;
+}
+
+.toggle{
+	margin-bottom:-17px;
+	width: 950px;
+}
+
+.all_bills{
+	background: #eee;
+	display: none;
+}
+
+.all_bills li{
+	list-style: none;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.all_bills li span{
+	display: inline-block;
+    width: 100px;
+    margin: 0 50px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+
+.bill_period{
+	width: 200px!important;
+}
+.btn_checkAttendance{
+	color: #5b9fe2;
+	cursor: pointer;
+}
+
+.del_button{
+	width: 24px;
+    height: 25px;
+    float: right;
+    display: none;
+    background-image: url(../../img/icon/order-icons.png);
+    background-position: -18px -125px;
+    background-repeat: no-repeat;
+}
+.del_button:hover{
+	  background-position:5px -125px;
+}
+
+tbody:hover .del_button{
+	display:block;
+}

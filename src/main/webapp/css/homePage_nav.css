@@ -1,0 +1,209 @@
+
+/*这里放几个轮播图的样式  */
+.homepage_banner{
+	float:left;
+	width: 920px;
+    height: 373px;
+}
+.swiper-slide img{
+	width:920px;
+	height: 373px;
+	/* object-fit:contain; */
+}
+/*这里放几个轮播图的样式 end  */
+#right_banner {
+	height: 403px;
+	margin-left: 250px;
+	margin-top: 10px;
+}
+
+.nav_left a {
+	text-decoration: none;
+	color: #000;
+}
+
+.nav_left a:hover {
+	text-decoration: underline;
+}
+
+#banner_menu a {
+	text-decoration: none;
+	color: #000;
+	font-weight: bold;
+    font-size: 16px;
+}
+
+#banner_menu a:hover {
+	color: #fc0e2a;
+}
+
+.nav_left ul li span:hover  a {
+	color: #fc0e2a;
+	text-decoration: none;
+}
+
+.nav_containor {
+	width: 230px;
+	height: auto;
+	position: relative;
+}
+
+.nav_left {
+	width: 230px;
+	height: 414px;
+	background: #fff;
+	border: 2px solid #fc0e2a;
+}
+
+.nav_left ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	height: auto;
+}
+
+.nav_left ul li {
+	height: 37px;
+	line-height: 37px;
+	text-align: left;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.nav_left ul li span {
+	padding-left: 10px;
+	height: 36px;
+	display: block;
+	background: #fff;
+	color: #000;
+}
+
+#nav_title_fjg {
+	background-color: #fc0e2a;
+	color: #fff;
+	height: 58px;
+	line-height: 40px;
+}
+
+.nav_left ul li span:hover {
+	color: #fc0e2a;
+	background: #ffe4dc;
+	cursor: pointer;
+}
+
+.nav_right {
+	width: 600px;
+	height: 385px;
+	position: absolute;
+	margin-top: 30px;
+	margin-left: 230px;
+	top: 0px;
+}
+
+.nav_sub {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 374px;
+	background: #fff;
+	padding: 10px 0px;
+	border: 1px solid red;
+	z-index: 10;
+	margin-top: 10px;
+}
+
+.nav_sub dl {
+	overflow: hidden;
+	padding: 0px;
+	margin-bottom: 0px;
+}
+
+.nav_sub dt {
+	width: 130px;
+	float: left;
+	display: block;
+	position: relative;
+	clear: left;
+}
+
+.nav_sub dt a {
+	font-size: 14px;
+	color: #000;
+	font-weight: bold;
+	text-align: center;
+	padding-left: 12px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.nav_sub dt li {
+	width: 4px;
+	right: 12px;
+	top: 2px;
+	font-size: 14px;
+	position: absolute;
+	font-style: normal;
+}
+
+.nav_sub dd {
+	width: 580px;
+	float: left;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	padding-right: 20px;
+	padding-left:11px;
+	border-bottom: 1px dashed #E3E3E3;
+}
+
+.nav_sub dd a {
+	font-size: 12px;
+	float: left;
+	color: #666;
+	padding: 0 10px;
+	margin: 4px 0px 10px 0px;
+	text-decoration: none;
+	cursor: pointer;
+	border-left: 1px solid #E3E3E3;
+}
+
+.nav_sub dd a:hover {
+	color: #Fc0e2a;
+}
+
+.nav_hide {
+	display: none;
+}
+
+.nav_show {
+	display: block;
+}
+
+#banner_menu {
+	height: 30px;
+}
+
+#banner_menu ul {
+	height: 30px;
+}
+
+#banner_menu li {
+	float: left;
+	margin: 5px 25px;
+	list-style-type: none;
+}
+
+.addArrow a:after {
+	content: "";
+	position: absolute;
+	top: 14px;
+	right: 10px;
+	width: 8px;
+	height: 8px;
+	border-right: 1px solid #222;
+	border-top: 1px solid #222;
+	transform: rotate(45deg);
+}
+
+.addArrow {
+	position: relative;
+}

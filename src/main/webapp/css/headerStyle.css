@@ -1,0 +1,216 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'icomoon';
+	src: url('../img/icon/icomoon/icomoon.eot');
+	src: url('../img/icon/icomoon/icomoon.eot?#iefix')
+		format('embedded-opentype'),
+		url('../img/icon/icomoon/icomoon.woff') format('woff'),
+		url('../img/icon/icomoon/icomoon.ttf') format('truetype'),
+		url('../img/icon/icomoon/icomoon.svg#icomoon') format('svg');
+}
+*, div {
+	margin: 0px;
+	padding: 0px;
+}
+header{
+	margin-bottom: 8px;
+	box-shadow: 0px 6px 17px #c5c5bdcc;
+}
+
+/*topbar*/
+#topbar {
+	width: 100%;
+	height: 30px;
+	background-color: #EBEBEB;
+	color: #999999;
+}
+
+#topbar #top {
+	width: 1190px;
+	height: 30px;
+	margin: 0 auto;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+
+#poi {
+	line-height: 30px;
+	float: left;
+	font-size: small;
+}
+
+.cityname::before{
+	content: "\e948";
+	font-family: "icomoon";
+}
+/*更改顶端目录第一个选项的样式  */
+#topmenu_0{
+	color:#FC0E2A!important;
+	cursor:default;
+} 
+
+#top #link {
+	float:right;
+}
+
+#top #link li {
+	float: left;
+	list-style: none;
+	padding: 0 10px;
+	font-size: small;
+	line-height: 30px;
+}
+
+#top #link li a {
+	text-decoration: none;
+	color: #999999;
+}
+
+#top #link li a:hover {
+	text-decoration: none;
+	color: #FC0E2A;
+}
+
+/*header*/
+#header_parent{
+	width: 100%;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+}
+#header {
+	width: 1190px;
+	padding: 10px 0;
+	display: flex;
+}
+
+#header #logo {
+}
+
+#header #search {
+	flex: 1;
+	padding: 20px 0;
+	display: flex;
+	justify-content: center;
+}
+
+#search-border {
+	display:flex;
+}
+.content_type_selection{
+	width: 60px;
+	border: 1px solid #FC0E2A;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-right: 1px solid transparent;
+	position: relative;
+}
+.content_type_selection:hover{
+	border-right: 1px solid #FC0E2A;
+	border-bottom-color:  #ffffff;
+	border-bottom-left-radius: 0;
+}
+.selected_type{
+	cursor:pointer;
+	position:relative;
+	height: 100%;
+	padding: 9px 20px 9px 10px;
+	text-align: center;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.selected_type::after{
+	content: "";
+	display: inline-block;
+	position: absolute;
+	top: 15px;
+	right: 8px;
+	width: 5px;
+	height: 5px;
+	border-right: 1px solid #222;
+	border-bottom: 1px solid #222;
+	transform: rotate(45deg);
+}
+
+.selected_type:hover{
+	background-color: #ffe4dc;
+	color:#FC0E2A;
+}
+.selected_type:hover::after{
+	border-right: 1px solid #FC0E2A;
+	border-bottom: 1px solid #FC0E2A;
+}
+
+.unselected_type{
+	cursor:pointer;
+	position: absolute;
+	left: -1px;
+	top: 38px;
+	width: 60px;
+	padding: 5px 0 5px 10px;
+	border: 1px solid #FC0E2A;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-top-color:  #ffffff;
+}
+.unselected_type:hover{
+	background-color: #ffe4dc;
+	color:#FC0E2A;
+}
+#search-border form{
+	display:flex;
+	position:relative;
+	border: 1px solid #FC0E2A;
+	border-left: 0;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.search_input {
+	height:100%;
+	border: none;
+	padding: .375rem .75rem;
+	font-size: 13px;
+}
+#search-border form .suggestion{
+	display:none;
+	position: absolute;
+	border: 1px solid #FC0E2A;
+	width: 388px;
+	top: 38px;
+	background-color: white;
+	padding: 1px;
+	z-index: 1;
+}
+#search-border form .suggestion>div{
+	padding: 0 6px;
+	cursor: pointer;
+	line-height: 21px;
+}
+#search-border form .suggestion>div:hover{
+	background-color: #ffe4dc;
+	color:#FC0E2A;
+}
+#search-border form button.btn{
+	height:100%;
+	border-color: #FC0E2A;
+	background-color: #FC0E2A;
+	color: #ffffff;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+#search-border form button.btn:hover{
+	border-color: #d43f3a;
+	background-color: #d43f3a;
+}
+#header #logo img {
+	height: 80px;
+	width: 240px;
+}
+.cityname{
+	float:left;
+	margin-right: 3px;
+}
+#welcome{
+	color:#999999;
+	margin-left: 4px;
+}

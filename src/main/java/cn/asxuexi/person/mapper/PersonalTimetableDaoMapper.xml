@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.person.dao.PersonalTimetableDao">
+	<select id="listPersonalTimetables" resultType="java.util.HashMap">
+		SELECT dbo.course.coursename AS course_name, dbo.course_timetable.chapter_number, 
+		dbo.course_timetable.chapter_id, dbo.course_timetable.chapter_name, 
+		dbo.course_timetable.chapter_date, dbo.course_timetable.chapter_begin, 
+		dbo.course_timetable.chapter_end, dbo.course_timetable.chapter_length, 
+		dbo.course_timetable.course_id
+		FROM  dbo.[order] 
+		INNER JOIN dbo.course_timetable 
+		ON dbo.[order].course_id = dbo.course_timetable.course_id 
+		INNER JOIN dbo.course 
+		ON dbo.course_timetable.course_id = dbo.course.courseid
+		WHERE dbo.[order].user_id = #{userId}
+		AND dbo.[order].order_status IN (11,12,20,21)
+		AND dbo.course_timetable.chapter_date &gt;= #{begin}
+		AND dbo.course_timetable.chapter_date &lt; #{end}
+		ORDER BY dbo.course_timetable.chapter_date ASC,
+		dbo.course_timetable.chapter_begin ASC
+	</select>
+</mapper>

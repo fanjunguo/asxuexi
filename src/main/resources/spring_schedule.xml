@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	  http://www.springframework.org/schema/beans 
+	  http://www.springframework.org/schema/beans/spring-beans.xsd
+	  http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd
+	  http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc.xsd
+      http://www.springframework.org/schema/tx
+      http://www.springframework.org/schema/tx/spring-tx.xsd">
+      
+      <!--job配置  -->
+      <bean name="cancelOrderAutomaticlyJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+      	<property name="jobClass" value="cn.asxuexi.order.entity.cancelOrderAutomaticlyJob"></property>
+      	<!-- 必须设置为true，如果为false，当没有活动的触发器与之关联时会在调度器中删除该任务  -->
+        <property name="durability" value="true"/>
+      	<!-- 指定spring容器的key，如果不设定在job中的jobmap中是获取不到spring容器的 -->
+        <property name="applicationContextJobDataKey" value="applicationContext"/>
+      </bean>
+     
+      
+      <!-- 测试另外一种job配置方法-->
+     <!--  <bean id="TestJob" class="cn.asxuexi.order.entity.TestJob"></bean>
+      
+      <bean id="jobDatail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+      	<property name="targetObject" ref="TestJob"></property>
+      	<property name="targetMethod" value="test"></property>
+      </bean> -->
+       
+      
+    <!--   <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		    <property name="jobDetail" ref="jobDatail"/>
+		    <property name="cronExpression" value="0/10 * * * * ?"/>
+		</bean> -->
+		<!-- trigger -->
+		<bean id="cronTrigger2" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		    <property name="jobDetail" ref="cancelOrderAutomaticlyJob"/>
+		    <property name="cronExpression" value="* 0/30 * * * ?"/>
+		</bean>
+		
+		<!-- Scheduler -->
+		<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		    <property name="triggers">
+		        <list>
+		            <ref bean="cronTrigger2"/>
+		        </list>
+		    </property>
+		</bean>
+		
+		
+</beans>

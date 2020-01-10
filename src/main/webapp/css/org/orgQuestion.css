@@ -1,0 +1,236 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'icomoon';
+	src: url('../img/icon/icomoon/icomoon.eot');
+	src: url('../img/icon/icomoon/icomoon.eot?#iefix')
+		format('embedded-opentype'), url('../img/icon/icomoon/icomoon.woff')
+		format('woff'), url('../img/icon/icomoon/icomoon.ttf')
+		format('truetype'), url('../img/icon/icomoon/icomoon.svg#icomoon')
+		format('svg');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.pagination {
+	display: block;
+	text-align: center;
+}
+
+.pagination a, .pagination span {
+    text-decoration: none;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    border: 1px solid #999;
+    display: inline-block;
+    text-align: center;
+    color: #999;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    user-select: none;
+}
+
+.pagination a:hover{
+	border-color: red;
+	color: red;
+}
+
+.pagination span:hover{
+	cursor: default;
+}
+
+.pagination .ellipsis{
+	border-color: transparent;
+	cursor: default;
+}
+
+.pagination .current{
+	border-color: red;
+	background: red;
+	color: white;
+}
+
+.pagination .disabled{
+	border-color: #ccc;
+	color: #ccc;
+}
+
+.pagination .disabled:hover{
+	cursor: not-allowed;
+}
+
+.question_container .nav-tabs>li>a{
+	border-radius: 0;
+	color: #555;
+	font-size: 18px;
+}
+
+.question_container .nav-tabs>li.active>a{
+	border-top: 2px solid red;
+	color: red;
+}
+
+.question_container .dropdown-menu > .active > a, 
+.question_container .dropdown-menu > .active > a:focus, 
+.question_container .dropdown-menu > .active > a:hover{
+	background-color: red;
+}
+
+#org, #course {
+	padding: 10px;
+}
+
+.question_wrap{
+	margin-top: 10px; 
+}
+
+.question_status button:first-child {
+	width: 135px;
+}
+
+.question_group{
+	padding: 10px 20px;
+	background-color: #f8f8f8;
+	margin: 10px 0;
+}
+
+.question_group .top{
+	display: flex;
+}
+
+.question_group .top>div{
+	flex: 1;
+}
+
+.question_group .top .operation{
+	text-align: right;
+}
+
+.question_group .top .operation span{
+	padding: 0 10px;
+	cursor: pointer;
+	position: relative;
+}
+
+.question_group .top .operation span:hover{
+	color: red;
+}
+
+.question_group .top .operation .stick::before{
+	content: "\ea32";
+	font-family: "icomoon";
+}
+
+.question_group .top .operation .unstick::before{
+	content: "\ea36";
+	font-family: "icomoon";
+	top: -1px;
+	position: absolute;
+	left: -4px;
+}
+
+.question_group .center{
+	
+}
+
+.ask_text, .answer_text{
+	display: flex;
+	position: relative;
+}
+
+.ask_text div:first-child, 
+.answer_text div:first-child{
+	width: 90%;
+	padding: 10px 30px;
+	line-height: 25px;
+}
+
+.ask_text div:first-child{
+	font-weight: bold;
+}
+
+.ask_text::before{
+	content: "问";
+	border: 1px solid #ff9911;
+	background: #ff9911;
+}
+
+.answer_text::before{
+	content: "答";
+	border: 1px solid #99bb11;
+	background: #99bb11;
+}
+
+.answer_text.not_answer::before{
+	border-color: #bbb;
+	background-color: #bbb;
+}
+
+.ask_text::before, .answer_text::before{
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 20px;
+	top: 12px;
+	position: absolute;
+	font-size: 12px;
+	color: white;
+}
+
+.answer_text button{
+	position: absolute;
+	right: 0;
+	align-self: center;
+}
+
+#answer_modal .modal-dialog{
+	margin-top: 250px;
+}
+
+#answer_modal .answer_container{
+	 padding: 10px;
+}
+
+#answer_modal .answer_container .alert{
+	padding: 10px;
+}
+
+#answer_content{
+	width: 100%;
+	height: 90px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	resize: none;
+}
+
+#answer_modal .answer_buttons{
+	display: flex;
+	justify-content: flex-end;
+}
+
+#answer_modal .answer_buttons button{
+	margin-left: 10px;
+}
+
+#stick_modal .modal-dialog{
+	margin-top: 250px;
+}
+
+#stick_modal .stick_container{
+	 padding: 10px;
+}
+
+#stick_modal .stick_buttons{
+	display: flex;
+	justify-content: flex-end;
+}
+
+#stick_modal .stick_buttons button{
+	margin-left: 10px;
+}
+

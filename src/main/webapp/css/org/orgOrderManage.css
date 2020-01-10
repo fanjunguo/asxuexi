@@ -1,0 +1,101 @@
+*{
+	margin: 0;
+	padding:0;
+}
+
+.right_content{
+    font-family: Arial,"Microsoft Yahei","\5FAE\8F6F\96C5\9ED1";
+	font-weight: 300;
+}
+.table_container{
+	margin-right: 8px;
+	margin-bottom: 22px;
+}
+
+.table_container thead{
+	text-align: center;
+	font-size: 12px;
+}
+.table_container thead,.order_number{
+	background: #eee;
+	font-size: 12px;
+}
+
+.table_container tbody,.order_number{
+	border: 1px solid #e5e5e5;
+}
+
+thead td {
+    width: 150px;
+}
+
+.space_row{
+	height: 20px;
+}
+
+.order_message td{
+	padding: 14px;
+	font-size: 12px;
+	border-right: 1px solid #e5e5e5;
+	text-align: center;
+}
+
+.order_info{
+	padding: 5px;
+	width: 350px;
+}
+.order_number td{
+	padding: 5px;
+}
+
+.order_number span{
+	margin: 0px 60px 0 10px;
+    width: 190px;
+    display: inline-block;
+}
+.course_img{
+	width: 50px;
+	height: 50px;
+	object-fit: contain;
+	float:left;
+	border: 1px solid #e5e5e5;
+	margin-right: 5px;
+}
+
+.order_span{
+	display: block;
+}
+
+.course_name{
+	width: 100%;
+	font-size:14px;
+	font-weight: normal;
+}
+
+.td1 div{
+	text-align: left;
+	margin-left: 60px;
+}
+
+.course_name{
+	margin-top: 5px;
+}
+
+.table_container a:hover{
+	color: red;
+	text-decoration: none;
+}
+.table_container a{
+	color: #000;
+	text-decoration: none;
+}
+
+.cancel_order,.part_refund{
+	display: block;
+	cursor: pointer;
+}
+
+.modal-dialog {
+    width: 350px;
+    margin: 140px auto;
+ }

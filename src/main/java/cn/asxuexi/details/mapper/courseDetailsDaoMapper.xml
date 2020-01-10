@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.details.dao.CourseDetailsDao">
+	<select id="getCourseSort" resultType="java.util.HashMap">
+		SELECT dbo.course.coursename,dbo.course.org_id FROM dbo.course
+		WHERE dbo.course.courseid = #{courseId}
+	</select>
+	<resultMap type="cn.asxuexi.details.entity.CourseDO" id="course">
+		<id column="course_id" property="course_id"/>
+		<result column="course_name" property="course_name"/>
+		<result column="course_teacher" property="course_teacher"/>
+		<result column="course_description" property="course_description"/>
+		<result column="course_charging" property="course_charging"/>
+		<result column="page_view" property="page_view"/>
+		<result column="status" property="status"/>
+		<result column="org_id" property="org_id"/>
+		<result column="org_name" property="org_name"/>
+		<result column="tel" property="tel"/>
+		<collection property="sortIdList" ofType="java.lang.String" 
+			select="listCourseSorts" column="course_id"></collection>
+		<collection property="packageList" ofType="java.util.HashMap" 
+			select="listCoursePackages" column="course_id"></collection>
+		<collection property="pictureList" ofType="java.util.HashMap" 
+			select="listImgs" column="course_id"></collection>
+		<collection property="videoList" ofType="java.util.HashMap" 
+			select="listCourseVideos" column="course_id"></collection>
+		<collection property="courseTimetable" ofType="java.util.HashMap" 
+			select="listCourseTimetable" column="course_id"></collection>
+	</resultMap>
+	<select id="getCourse" resultMap="course">
+		SELECT dbo.course.courseid AS course_id, dbo.course.coursename AS course_name, 
+		dbo.course.teacher AS course_teacher, dbo.course.des AS course_description, 
+		dbo.course.org_id, dbo.course.status, dbo.org.orgname AS org_name, 
+		dbo.course.course_charging,dbo.org.tel, dbo.course.page_view
+		FROM dbo.course
+		INNER JOIN dbo.org
+		ON dbo.course.org_id = dbo.org.orgid
+		WHERE dbo.course.courseid = #{courseId}
+	</select>
+	<select id="countCourseStudent" resultType="java.lang.Integer">
+		select count(user_id) from [order] 
+		where course_id = #{courseId} 
+		and order_status in (11,12,20,21)
+	</select>
+	<select id="listCourseSorts" resultType="java.lang.String">
+		select s.sort_id from course_sort cs 
+			inner join sort s on cs.sort_id = s.sort_id
+		where cs.course_id = #{courseId}
+	</select>
+	<select id="listCoursePackages" resultType="java.util.HashMap">
+		SELECT course_id, package_id, package_name, package_price, course_length
+		FROM dbo.course_package
+		WHERE status = 1 AND course_id = #{courseId}
+		ORDER BY package_price
+	</select>
+	<select id="listImgs" resultType="java.util.HashMap">
+		SELECT course_id, img_id, img_name, img_order
+		FROM dbo.course_img
+		WHERE course_id = #{courseId}
+		ORDER BY img_order
+	</select>
+	<select id="listCourseVideos" resultType="java.util.HashMap">
+		SELECT course_id, video_id, video_name, video_order
+		FROM dbo.course_video
+		WHERE course_id = #{courseId}
+		ORDER BY video_order
+	</select>
+	<select id="listCourseTimetable" resultType="java.util.HashMap">
+		SELECT course_id, chapter_id, chapter_number, chapter_name,
+		chapter_date, chapter_begin, chapter_end, chapter_length
+		FROM dbo.course_timetable
+		WHERE status = 1 AND course_id = #{courseId}
+		ORDER BY chapter_number
+	</select>
+	<select id="getOrg" resultType="java.util.HashMap">
+		SELECT dbo.org.orgid AS org_id, dbo.org.orgname AS org_name, 
+		dbo.org.address AS org_address, dbo.org.tel AS org_tel, 
+		dbo.areas.name AS county_name, dbo.org.status, 
+		dbo.logo.name AS logo_name
+		FROM dbo.org INNER JOIN dbo.areas
+		ON dbo.org.localid = dbo.areas.id
+		INNER JOIN dbo.logo
+		ON dbo.org.orgid = dbo.logo.org_id
+		WHERE dbo.org.orgid = #{orgId}
+	</select>
+	<select id="listCourses" resultType="java.util.HashMap">
+		SELECT TOP(2) dbo.course.courseid AS course_id, 
+		dbo.course.coursename AS course_name,
+		dbo.course_img.img_name
+		FROM dbo.course INNER JOIN dbo.course_img
+		ON dbo.course.courseid = dbo.course_img.course_id
+		WHERE dbo.course.org_id = #{orgId} 
+		AND dbo.course.courseid != #{courseId}
+		AND dbo.course.status = 1
+		AND dbo.course_img.img_order = 1
+		ORDER BY dbo.course.order_weight
+	</select>
+	<insert id="insertCollection">
+		INSERT INTO dbo.collection (user_id, course_id, org_id)
+		VALUES (#{userId},#{courseId},#{orgId})
+	</insert>
+	<insert id="insertQuestion">
+		INSERT INTO dbo.course_ask_answer 
+		(id,user_id,course_id,org_id,question,gmt_create) 
+		VALUES 
+		(#{id},#{userId},#{courseId},#{orgId},#{question},#{now})
+	</insert>
+	<select id="listQuestions" resultType="java.util.HashMap">
+		SELECT dbo.course_ask_answer.id, dbo.course_ask_answer.question, 
+		dbo.course_ask_answer.answer, dbo.course_ask_answer.gmt_create, 
+		dbo.course_ask_answer.gmt_modified, dbo.[user].name, 
+		dbo.[user].photo, dbo.[user].id as userId 
+		FROM  dbo.course_ask_answer INNER JOIN dbo.[user] 
+		ON dbo.course_ask_answer.user_id = dbo.[user].id  
+		WHERE dbo.course_ask_answer.course_id = #{courseId}  
+		ORDER BY dbo.course_ask_answer.stick DESC, 
+		dbo.course_ask_answer.gmt_modified DESC, 
+		dbo.course_ask_answer.gmt_create DESC
+	</select>
+	<update id="updatePageView">
+		UPDATE dbo.course SET page_view = #{pageView} 
+		WHERE dbo.course.courseid = #{courseId} 
+	</update>
+</mapper>

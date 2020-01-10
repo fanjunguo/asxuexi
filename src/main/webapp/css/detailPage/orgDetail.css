@@ -1,0 +1,224 @@
+@charset "UTF-8";
+
+body {
+	background-color: #EBEBEB;
+}
+hr{
+	margin: 0px;
+	width: 712px;
+}
+a:hover {
+	color:#337ab7;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src: url('../img/icon/icomoon/icomoon.eot');
+	src: url('../img/icon/icomoon/icomoon.eot?#iefix')
+		format('embedded-opentype'), url('../img/icon/icomoon/icomoon.woff')
+		format('woff'), url('../img/icon/icomoon/icomoon.ttf')
+		format('truetype'), url('../img/icon/icomoon/icomoon.svg#icomoon')
+		format('svg');
+}
+
+.body {
+	width: 1200px;
+	margin: 0 auto;
+	margin-bottom: 14px;
+}
+
+.orgTitle {
+	height: 30px;
+    line-height: 30px;
+}
+
+.org {
+	background: #fff;
+	border-radius: 10px;
+	border: solid 1px #e5e5e5;
+	display: flex;
+	margin-top: 22px;
+    padding: 3px 3px 8px 8px;
+}
+
+.orgInfo {
+	color: #666666;
+	width: 57%;
+	display: inline-block;
+	margin: 5px 10px;
+}
+
+.orgInfo div {
+	padding-left: 20px;
+	margin: 10px auto;
+}
+
+.orgInfoTitle {
+	height: 30px;
+	line-height: 30px;
+}
+
+.orgInfoName {
+	font-size: 24px;
+}
+
+.org_validation {
+	font-size: 12px;
+	height: 25px;
+	line-height: 25px;
+	color: #F60;
+}
+
+.orgInfoLink {
+    font-size: 14px;
+    margin-left: 10px;
+    color: #00a1ef;
+    display: none;
+}
+}
+
+.orgInfoHeight {
+	height: 30px;
+}
+
+#spana::after  {
+	content: "\e948";
+	font-family: "icomoon";
+	color:red;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.orgImage {
+	width: 40%;
+	display: inline-block;
+}
+
+.orgImageShow {
+	width: 100%;
+	height: 260px;
+	border-radius: 5px;
+	border: dashed 1px #e3dbdb;
+	background: #ececec;
+	margin-top: 12px;
+}
+
+.orgImageShow img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.collection {
+	width: 22px;
+    height: 22px;
+    line-height: 22px;
+    margin: 15px 7px 0 0;
+    cursor: pointer;
+}
+
+.collection span:nth-child(1):after {
+	content: "\e9d7";
+	font-family: "icomoon";
+	font-size: 22px;
+}
+
+.collectionActive:after {
+	content: "\e9d9" !important;
+	font-family: "icomoon";
+	font-size: 22px;
+	color: #ff6662;
+}
+
+/**机构课程推荐*/
+.showCourse {
+	background: #fff;
+	border-radius: 10px;
+	border: solid 1px #e5e5e5;
+	padding: 0px;
+	text-decoration: none;
+}
+
+.courseInfo {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tab_card {
+	width: 20%;
+	box-sizing: border-box;
+	padding: 10px;
+	text-decoration: none;
+}
+
+.tab_card .course_img img {
+	width: 100%;
+	height: 160px;
+	border-radius: 4px;
+	object-fit: contain;
+    border: 1px solid #ccc;
+}
+
+.tab_card .course_info {
+	width: 100%;
+	border-radius: 4px;
+}
+
+.tab_card .course_info .course_name {
+	font-size: 18px;
+	color: #666;
+	width: 100%;
+	height: 25px;
+	line-height: 25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	letter-spacing: 1px;
+}
+
+.sort_name {
+	float: left;
+	font-size: 15px;
+	color: #999;
+	height: 25px;
+	line-height: 25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.course_price .price_type {
+	font-size: 20px;
+	color: #F60;
+	margin-right: 6px;
+	letter-spacing: -.8px;
+	vertical-align: baseline;
+}
+
+.course_price .price_symbol {
+	font-size: 16px;
+	color: #F60;
+	font-weight: 500;
+	vertical-align: baseline;
+}
+
+.course_price .price_value {
+	font-size: 18px;
+	color: #F60;
+	margin-right: 6px;
+	letter-spacing: -.8px;
+	vertical-align: bottom;
+}
+
+.course_price .price_original {
+	font-size: 12px;
+	color: #999;
+	text-decoration: line-through;
+	margin-left: 5px;
+	vertical-align: text-bottom;
+}
+
+.tab_card:hover{
+	text-decoration: none;
+}

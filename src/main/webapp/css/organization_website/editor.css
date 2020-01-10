@@ -1,0 +1,539 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.header_content{
+	width:100%;
+	margin-top: 70px;
+}
+.org_content>div{
+	margin-bottom:5px;
+}
+.background_container{
+	width: 1190px;
+    height: 100%;
+    margin: 0 auto;
+}
+.add_module{
+	width: 300px;
+	margin: 0 auto;
+}
+#add_module_btn{
+	width: 300px;
+}
+/*网站编辑模式:上部功能条*/
+.function_bar{
+	position: fixed;
+	z-index: 20;
+	background: white;
+	top: 0;
+	width: 100%;
+	min-width: 1190px;
+	height: 60px;
+	border:1px solid white;
+	padding-right: 10px;
+	box-shadow: 0 3px 5px 1px rgba(0,0,0,0.1);
+}
+.function_bar_btn{
+	color: #ccc;
+	margin-left: 15px;
+	width: 88px;
+	height: 35px;
+	border-radius: 4.5px;
+	border:1px solid gray;
+	text-align: center;
+    line-height: 35px;
+    margin-top: 9px;
+    cursor: not-allowed;
+    display: inline-block;
+}
+.function_bar_cancel,.function_bar_save,
+.store_template{
+	color: black;
+	cursor: pointer;
+}
+.function_bar_cancel:hover,.function_bar_save:hover,
+.store_template:hover{
+	background: #1A78FF;
+	color: white;
+	border-color:transparent;
+}
+.store_template, .store_head{
+	float: right;
+	display:none;
+}
+.function_bar_edit{
+	display: inline-block;
+    width: 32px;
+    height: 32px;
+    cursor: not-allowed;
+}
+.revoke_usable,.redo_usable{
+	cursor: pointer;
+}
+.function_bar_edit img {
+    margin-top: -3px;
+}
+.edit_revoke{
+	margin-left: 30px;
+}
+
+
+/*模式窗背景*/
+#hover_layout{
+	background-color: gray;
+	opacity: 0.5;
+	width: 100%;
+	min-width: 1190px;
+	height: 100%;
+	min-height: 600px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	z-index: 5
+}
+/*模块list*/
+.modal-header{
+	text-align: center;
+	max-height: 57px;
+}
+.modal-body{
+	height: 390px;
+	overflow-y: auto;
+}
+.modal-footer{
+	padding: 9px!important;
+}
+#module_list{
+	position: fixed;
+	top: 80px;
+	left: calc((100vw - 940px) / 2);
+	z-index: 10;
+	height: 500px;
+	min-width: 135px;
+	background-color: #fff;
+	display: none;
+	border-radius: 0.3rem;
+}
+/*新增、编辑模块面板*/
+#add_module_panel,#edit_module_panel{
+	position: fixed;
+	top: 80px;
+	left:calc(((100vw - 940px) / 2) + 140px);
+	z-index: 10;
+	height: 500px;
+	width: 800px;
+	background-color: #fff;
+	display: none;
+	border-radius: 0.3rem;
+}
+/*删除面板*/
+#del_module_panel,#del_nav_item{
+	position: fixed;
+	top: 180px;
+	left: 40%;
+	z-index: 10;
+	height: 110px;
+	width: 350px;
+	background-color: #fff;
+	display: none;
+	border-radius: 0.3rem;
+}
+/*点击导航,跳转前确认框样式*/
+#switch_makesure_panel{
+	z-index: 10;
+	position: fixed;
+	top:140px;
+	left: calc((100vw - 400px)/2);
+	width: 400px;
+	background-color: #fff;
+	display: none;
+	border-radius: 0.3rem;
+}
+.save_info_content{
+	height: 105px;
+	text-align: center;
+    line-height: 100px;
+    font-size: 16px;
+}
+
+.module_list_li{
+	list-style: none;
+	line-height: 30px;
+	text-align: center;
+	cursor: pointer;
+}
+.module_list_li:hover{
+	color: #3379b7;
+}
+
+.selected{
+	background-color: #e5e5e5;
+}
+/*模式窗-end*/
+
+/*编辑和删除按钮的样式*/
+.edit_button_group{
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	top:5px;
+	width: 300px;
+	margin: 0 auto;
+	z-index: 10;
+	left:calc((100% - 300px)/2);
+}
+.edit_button_group>div{
+	margin: 0 5px;
+}
+.edit_button,.del_button,.module_remove_up,.module_remove_down{
+	border:1px solid #e5e5e5;
+	border-radius: 3px;
+	cursor: pointer;
+	padding: 1px 2px;
+	margin-right: 3px;
+}
+
+/*----------范俊国-------*/
+/*组件在面板里的时候，要有个外框，显示是否被选中*/
+.border{
+	border: 1px solid #e5e5e5;
+	padding: 5px 0;
+	margin-bottom: 20px;
+}
+.border:hover{
+	border-color: #1D9BF6;
+}
+.selected_border{
+	border: 1px solid #1D9BF6;;
+	padding: 5px 0;
+	margin-bottom: 20px;
+}
+/*被选中的外框 end*/
+.nav_banner_content{
+	width: 1190px;
+	margin: 0 auto;
+	border: 1px solid;
+	border-color: transparent;
+}
+
+/*导航栏*/
+.nav_background{
+	width: 100%;
+	height: 50px;
+}
+/*导航栏 -end*/
+
+.colorTab{
+	width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    margin: 6px 8px 0 0;
+    cursor: pointer;
+    border: 0px;
+}
+.choose_color{
+	margin-left:10px;
+	margin-bottom: 20px; 
+}
+/*覆盖bs获得焦点后的属性*/
+.bg_light_blue>ul>li>a:focus{
+	background-color: #fff!important;
+	color: #00CCFF;
+}
+.bg_red>ul>li>a:focus{
+	background-color: #fff!important;
+	color:#FC2125;
+}
+.bg_orange>ul>li>a:focus{
+	background-color: #fff!important;
+	color: #FD8208
+}
+.bg_yellow>ul>li>a:focus{
+	background-color:#fff!important;
+	color: #FD8208;
+}
+.bg_green>ul>li>a:focus{
+	background-color: #fff!important;
+	color: #56D72B;
+}
+.bg_blue>ul>li>a:focus{
+	background-color: #fff!important;
+	color: #1D9BF6;
+}
+}
+.bg_purple>ul>li>a:focus{
+	background-color: #fff!important;
+	color: #BF56DA;
+}
+.bg_gray>ul>li>a:focus{
+	background-color: #fff!important;
+	color: #7B7B7E
+}
+.bg_light_gray>ul>li>a:focus{
+	background-color: #fff!important;
+	color: #CCCCCC
+}
+.bg_black>ul>li>a:focus{
+	background-color: #fff!important;
+	color: #000;
+}
+
+.focused{
+	background-color: #fff!important;
+	color:#000!important;
+	border-bottom: 2px solid;
+	
+
+}
+
+/*字体颜色*/
+.text_black{
+	color:#000;
+}
+.text_white{
+	color:#fff;
+}
+.all_used_background,.banner_background{
+	position:relative;
+	width: 100%;
+}
+.all_used_background{
+	border: 1px solid transparent;
+}
+
+.banner{
+	height: 500px;
+}
+
+.bg_light_blue>ul>li>a:hover{
+	background-color: #fff!important;
+	color: #00CCFF;
+}
+.bg_red>ul>li>a:hover{
+	background-color: #fff!important;
+	color:#FC2125;
+}
+.bg_orange>ul>li>a:hover{
+	background-color: #fff!important;
+	color: #FD8208
+}
+.bg_yellow>ul>li>a:hover{
+	background-color:#fff!important;
+	color: #FD8208;
+}
+.bg_green>ul>li>a:hover{
+	background-color: #fff!important;
+	color: #56D72B;
+}
+.bg_blue>ul>li>a:hover{
+	background-color: #fff!important;
+	color: #1D9BF6;
+}
+}
+.bg_purple>ul>li>a:hover{
+	background-color: #fff!important;
+	color: #BF56DA;
+}
+.bg_gray>ul>li>a:hover{
+	background-color: #fff!important;
+	color: #7B7B7E
+}
+.bg_light_gray>ul>li>a:hover{
+	background-color: #fff!important;
+	color: #CCCCCC
+}
+.bg_black>ul>li>a:hover{
+	background-color: #fff!important;
+	color: #000;
+}
+
+
+.li_nav:hover{
+	background-color: #fff!important;
+	color: #00CCFF;
+}
+
+/*------背景颜色类----------*/
+.bg_white{
+	background-color: #fff;
+}
+.bg_red{
+	background-color:#FC2125;
+}
+.bg_orange{
+	background-color: #FD8208;
+}
+.bg_yellow{
+	background-color: #FEC309;
+}
+.bg_green{
+	background-color: #56D72B;
+}
+.bg_blue{
+	background-color: #1D9BF6;
+}
+.bg_light_blue{
+	background-color: #00CCFF;
+	
+}
+.bg_purple{
+	background-color: #BF56DA;
+}
+.bg_gray{
+	background-color: #7B7B7E;
+}
+.bg_light_gray{
+	background-color: #CCCCCC;
+}
+.bg_black{
+	background-color: #000;
+}
+
+/*修改导航栏内容*/
+.for_static_width td{
+	height: 47px;
+	width: 247px;
+	vertical-align: middle!important;
+}
+.icon_edit,.icon_del,.icon_up,.icon_down,.icon_left,.icon_right,
+.icon_add{
+	width: 30px;
+	height: 30px;
+	float: left;
+	cursor: pointer;
+}
+.icon_add{
+	background-image: url(../../img/icon/icon_add.png);
+}
+.icon_edit{
+	background-image: url(../../img/icon/icon_edit.png);
+}
+.icon_edit:hover{
+	background-image: url(../../img/icon/icon_edit_hover.png);
+}
+.icon_del{
+	background-image: url(../../img/icon/icon_del.png);
+}
+.icon_del:hover{
+	background-image: url(../../img/icon/icon_del_hover.png);
+}
+.icon_up{
+	background-image: url(../../img/icon/icon_up.png);
+}
+.icon_down{
+	background-image: url(../../img/icon/icon_down.png);
+}
+.icon_up:hover{
+	background-image: url(../../img/icon/icon_up_hover.png);
+}
+.icon_down:hover{
+	background-image: url(../../img/icon/icon_down_hover.png);
+}
+.icon_yes{
+	width: 30px;
+	height: 30px;
+	background-image: url(../../img/icon/icon_true.png);
+}
+#btn_add_new_item{
+	text-align: center;
+    line-height: 24px;
+    height: 24px;
+    width: 100px;
+    margin: 0 auto;
+    border-radius: .25rem;
+    background: gainsboro;
+    cursor: pointer;
+}
+
+/*轮播图 start*/
+.myswiper {
+    width: 99%;
+    height: 150px;
+    text-align: center;
+} 
+/*如果后面改成图片，下面三个class可以删除*/
+.modal-body .example1{
+	background-color: orange;
+}
+.modal-body .example2{
+	background-color: #4390EE;
+}
+.modal-body .example3{
+	background-color: #CA4040;
+}
+/* webuploader */
+#picker div:nth-child(2) {
+	width: 80px !important;
+	height: 40px !important;
+}
+.banner_background .swiper_img{
+	width: 1190px;
+	height: 500px;
+	object-fit: cover;
+}
+.forStore{
+	display: none;
+}
+/*轮播图 end*/
+
+/*轮播图编辑界面 start*/
+.banner_edit_img{
+	width: 119px;
+	height: 60px;
+}
+/*轮播图编辑界面 end*/
+/*footer*/
+footer{
+	width: 100vw;
+    height: 80px;
+    text-align: center;
+    background: #e5e5e5;
+    padding-top: 30px;
+}
+.homepage{
+	text-decoration: none;
+	color: #028aff;
+}
+.homepage:hover{
+	text-decoration: none;
+	color: red;
+}
+
+/* 错误样式*/
+.wrong_container{
+	width: 700px;
+    height: 200px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    line-height: 170px;
+    background: antiquewhite;
+}
+.wrong_container img{
+	width: 60px;
+    height: 60px;
+    margin-top: 50px;
+}
+
+
+.remove_bg{
+	position: absolute;
+    left: calc(1190px + (100vw - 1190px)/2);	top: 10px;
+	display: flex;
+	z-index: 10;
+}
+.remove_bg img{
+	margin-top: -3px;
+}
+.remind {
+    color: red;
+    font-size: 12px;
+    margin: 0 7px!important;
+    font-family: -webkit-body;
+}
+.backup{
+	margin-top: 40px;
+	background: #cccccc54;
+}

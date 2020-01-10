@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.order.dao.OrderDao">
+	<resultMap type="cn.asxuexi.order.entity.OrderEntity" id="orderEntity">
+		<id property="orderId" column="order_id"/>
+		<result column="charge_type" property="chargeType"/>
+		<result column="user_id" property="userId"/>
+		<result column="course_id" property="courseId"/>
+		<result column="package_id" property="packageId"/>
+		<result column="package_name" property="packageName"/>
+		<result column="order_price" property="orderPrice"/>
+		<result column="payment_amount" property="paymentAmount"/>
+		<result column="order_status" property="orderStatus"/>
+		<result column="student_id" property="studentId"/>
+		<result column="student_name" property="studentName"/>
+		<result column="student_tel" property="tel"/>
+		<result column="pay_type" property="payType"/>
+	</resultMap>
+	
+	
+	<insert id="createOrder" parameterType="cn.asxuexi.order.entity.OrderEntity">
+		insert into [order] 
+		( order_id, charge_type,user_id,course_id,package_id,payment_amount,order_status,student_id,
+		gmt_create,person_visibility,org_visibility,org_id,pay_type) 
+		values 
+		(#{orderId},#{chargeType},#{userId},#{courseId},#{packageId},#{paymentAmount},#{orderStatus},
+			#{studentId},getdate(),1,1,#{orgId},#{payType})
+	</insert>
+
+	<!--查询套餐(课程)信息  -->
+	<select id="getPackageInfo" resultType="map">
+		select dbo.course_package.package_price,dbo.course_package.status,dbo.course_package.course_id,dbo.course.course_end,dbo.course.course_charging as chargeType,
+			dbo.course.org_id as orgId
+		from dbo.course_package inner join
+			dbo.course ON dbo.course_package.course_id = dbo.course.courseid
+		where  dbo.course_package.package_id=#{packageId}
+	</select>
+	
+	<!--根据订单号和订单状态,查询订单信息  -->
+	<select id="getOrderInfo" resultType="map">
+		SELECT dbo.[order].*, dbo.student.student_name,dbo.student.tel as student_tel, dbo.course.coursename, dbo.course.course_begin, dbo.course.course_end,dbo.course_package.package_name
+		FROM  dbo.[order] INNER JOIN
+			   dbo.student on dbo.[order].student_id =  dbo.student.student_id INNER JOIN
+               dbo.course_package ON dbo.[order].package_id = dbo.course_package.package_id INNER JOIN
+               dbo.course ON dbo.[order].course_id = dbo.course.courseid
+        where dbo.[order].order_id=#{orderId} and  dbo.[order].user_id=#{userId} and  dbo.[order].order_status=#{orderStatus}
+	</select>
+	
+	<!--取消订单  -->
+	<update id="cancelOrder">
+		update dbo.[order] set order_status =#{orderStatus},cancel_reason=#{cancelReason}
+		where order_id=#{orderId}
+	</update>
+	
+	<!-- 订单状态变更 -->	
+	<update id="updateOrder">
+		update dbo.[order] set order_status =#{orderStatus}
+		where order_id=#{orderId}
+	</update>
+	
+	<!--根据订单号,查询订单的状态  -->
+	<select id="getOrderStatus" resultType="JsonData">
+		select dbo.[order].order_status as orderStatus,dbo.[order].user_id as userId, dbo.course.org_id as orgId,dbo.[order].payment_amount as paymentAmount 
+		from dbo.[order] inner join
+		dbo.course on dbo.[order].course_id = dbo.course.courseid
+		where dbo.[order].order_id=#{orderId}
+	</select>
+	
+	<!--查询所有的用户订单  -->
+	<select id="getAllOrders" resultMap="orderEntity">
+		SELECT dbo.[order].*,dbo.student.student_name,dbo.student.tel as student_tel, dbo.org.orgid as orgId, dbo.org.orgname as orgName, dbo.course.coursename, dbo.areas.MergerName+','+dbo.org.address as address, dbo.course_package.package_name,
+				 dbo.course_img.img_name as courseImg
+		FROM  dbo.[order] INNER JOIN
+		 	   dbo.student on dbo.[order].student_id =  dbo.student.student_id INNER JOIN
+               dbo.course ON dbo.[order].course_id = dbo.course.courseid INNER JOIN
+               dbo.org ON dbo.course.org_id = dbo.org.orgid INNER JOIN
+               dbo.areas ON dbo.org.localid = dbo.areas.ID INNER JOIN
+               dbo.course_package ON dbo.[order].package_id = dbo.course_package.package_id INNER JOIN
+               dbo.course_img ON dbo.[order].course_id = dbo.course_img.course_id
+        where dbo.[order].user_id=#{userId} and dbo.course_img.img_order=1 and dbo.[order].person_visibility !=0
+        <if test="orderStatus!=0">
+			and dbo.[order].order_status=#{orderStatus}
+		</if>
+        order by dbo.[order].gmt_create desc
+	</select>
+	
+	<!--查询所有机构订单-->
+	<select id="getAllOrdersOfOrg" resultMap="orderEntity">
+		SELECT dbo.[order].*, dbo.student.student_name,dbo.student.tel as student_tel, dbo.course_package.package_name, dbo.course.coursename, dbo.course_img.img_name as courseImg
+		FROM  dbo.[order] INNER JOIN
+				dbo.student on dbo.[order].student_id =  dbo.student.student_id INNER JOIN
+               dbo.course ON dbo.[order].course_id = dbo.course.courseid INNER JOIN
+               dbo.course_package ON dbo.[order].package_id = dbo.course_package.package_id INNER JOIN
+               dbo.course_img ON dbo.[order].course_id = dbo.course_img.course_id
+	WHERE (dbo.course.org_id = #{orgId}) and dbo.[order].org_visibility !=0 and dbo.course_img.img_order=1
+	<if test="orderStatus!=0">
+	 and dbo.[order].order_status=#{orderStatus}
+	</if>
+	ORDER BY dbo.[order].gmt_create desc 
+	</select>
+	
+	<!--查询订单详情  -->
+	<select id="getOrderDetail" resultType="map">
+		SELECT dbo.[order].*,dbo.student.student_name,dbo.student.tel as student_tel, dbo.org.orgid as orgId, dbo.org.orgname as orgName, dbo.org.tel,dbo.course.coursename,dbo.course.teacher, dbo.areas.MergerName+','+dbo.org.address as address, 
+				dbo.course_package.package_name, dbo.course_package.course_length,dbo.course.course_begin as courseBegin,dbo.course.course_end as courseEnd
+	
+		FROM  dbo.[order] INNER JOIN
+				dbo.student on dbo.[order].student_id =  dbo.student.student_id INNER JOIN
+                dbo.course ON dbo.[order].course_id = dbo.course.courseid INNER JOIN
+               dbo.org ON dbo.course.org_id = dbo.org.orgid INNER JOIN
+               dbo.areas ON dbo.org.localid = dbo.areas.ID INNER JOIN
+               dbo.course_package ON dbo.[order].package_id = dbo.course_package.package_id
+        where dbo.[order].order_id=#{orderId}
+	</select>
+	
+	<!-- 查询订单对应课程的图片 -->
+	<select id="getCourseImg" resultType="string">
+		select img_name from course_img where img_order=1 and course_id=#{courseId}
+	</select>
+	
+	
+	
+	<!--查询订单支付金额  -->
+	<select id="getPaymentAmount" resultType="double">
+		select payment_amount from [order] where order_id=#{orderId}
+	</select>
+	
+	<!--查询用户的账单信息 -->
+	<select id="getBillOfUser" resultType="map">
+		select dbo.user_bill.*,dbo.bill_period.course_id,CONVERT(VARCHAR(10),dbo.bill_period.start_date,20)+'——'+CONVERT(VARCHAR(10),dbo.bill_period.end_date,20) as billPeriod,
+				dbo.bill_period.items,dbo.bill_period.class_id
+		from dbo.user_bill inner join
+		dbo.bill_period on  dbo.user_bill.bill_id =dbo.bill_period.id
+		where dbo.user_bill.user_id=#{userId}
+		order by dbo.user_bill.bill_id
+	</select>
+	
+	<!-- 普通用户/机构删除订单 -->
+	<update id="deleteOrder">
+		<!--更新订单对于机构/用户的可见状态,并不真正删除  -->
+		update [order] set
+		<if test="identity=='person'.toString()">person_visibility = 0</if>
+		<if test="identity=='org'.toString()">org_visibility = 0</if>
+		where order_id=#{orderId}
+	</update>
+	
+	<!--订单退改规则 -->
+	<select id="getCancelRules" resultType="string">
+		select cancel_rules as cancelRules from orderCancelRules where charge_type =#{chargeType}
+	</select>
+	
+	<!-- 定时扫描,自动取消订单 -->
+	<update id="cancelOrderAuto">
+		update [order] set order_status = -1 ,gmt_modified =getdate()
+		where order_status = 10 and gmt_create &lt;= #{date}
+	</update>
+	
+	<!--根据订单号,确定对应的机构id  -->
+	<select id="getOrgIdByOrderId" resultType="string">
+		select org_id as orgId from [order] where order_id = #{orderId}
+	</select>
+	
+	<select id="getPayType" resultType="int">
+		select pay_type from [order] where order_id = #{orderId}
+	</select>
+</mapper>	

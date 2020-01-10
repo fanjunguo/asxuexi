@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="cn.asxuexi.organization.dao.CourseManagementDao">
+	<resultMap type="cn.asxuexi.organization.entity.CourseDO" id="course">
+		<id column="course_id" property="course_id"/>
+		<result column="course_name" property="course_name"/>
+		<result column="course_teacher" property="course_teacher"/>
+		<result column="course_description" property="course_description"/>
+		<result column="course_charging" property="course_charging"/>
+		<result column="org_id" property="org_id"/>
+		<result column="org_name" property="org_name"/>
+		<collection property="sortIdList" ofType="java.lang.String" 
+			select="listCourseSorts" column="course_id"></collection>
+		<collection property="packageList" ofType="java.util.HashMap" 
+			select="listCoursePackages" column="course_id"></collection>
+		<collection property="pictureList" ofType="java.util.HashMap" 
+			select="listImgs" column="course_id"></collection>
+		<collection property="videoList" ofType="java.util.HashMap" 
+			select="listCourseVideos" column="course_id"></collection>
+		<collection property="courseTimetable" ofType="java.util.HashMap" 
+			select="listCourseTimetable" column="course_id"></collection>
+	</resultMap>
+	<select id="getCourse" resultMap="course">
+		SELECT c.courseid AS course_id, c.coursename AS course_name,
+		c.teacher AS course_teacher, c.des AS course_description,
+		c.org_id, c.course_charging, o.orgname AS org_name
+		FROM dbo.course c
+		    INNER JOIN dbo.org o ON c.org_id = o.orgid
+		    INNER JOIN user_org uo on c.org_id = uo.org_id
+		WHERE c.courseid = #{courseId} AND uo.user_id = #{userId}
+	</select>
+	<select id="listCourses" resultType="java.util.HashMap">
+		SELECT dbo.course.courseid AS course_id, dbo.course.coursename AS course_name, 
+		dbo.course.org_id, dbo.course.status, dbo.org.orgname AS org_name, 
+		dbo.course.course_charging
+		FROM dbo.course 
+		INNER JOIN dbo.org
+		ON dbo.course.org_id = dbo.org.orgid
+		WHERE dbo.course.org_id = #{orgId}
+		AND dbo.course.status != -1
+		ORDER BY dbo.course.gmt_create DESC
+	</select>
+	<select id="listCoursePackages" resultType="java.util.HashMap">
+		SELECT course_id, package_id, package_name, package_price, course_length
+		FROM dbo.course_package
+		WHERE status = 1 AND course_id = #{courseId}
+	</select>
+	<select id="listImgs" resultType="java.util.HashMap">
+		SELECT course_id, img_id, img_name, img_order
+		FROM dbo.course_img
+		WHERE course_id = #{courseId}
+		ORDER BY img_order
+	</select>
+	<select id="listCourseVideos" resultType="java.util.HashMap">
+		SELECT course_id, video_id, video_name, video_order
+		FROM dbo.course_video
+		WHERE course_id = #{courseId}
+		ORDER BY video_order
+	</select>
+	<select id="listCourseTimetable" resultType="java.util.HashMap">
+		SELECT course_id, chapter_id, chapter_number, chapter_name,
+		chapter_date, chapter_begin, chapter_end, chapter_length
+		FROM dbo.course_timetable
+		WHERE status = 1 AND course_id = #{courseId}
+		ORDER BY chapter_number
+	</select>
+	<select id="listCourseSorts" resultType="java.lang.String">
+		select s.sort_id from course_sort cs 
+			inner join sort s on cs.sort_id = s.sort_id
+		where cs.course_id = #{courseId}
+	</select>
+	<select id="listOrgsByUserId" resultType="java.util.HashMap">
+		select o.orgid as orgId, o.orgname as orgName
+		from user_org uo inner join org o on uo.org_id = o.orgid
+		where uo.user_id = #{userId}
+		order by uo.main_school desc
+	</select>
+	<update id="updateCourseStatus">
+		UPDATE dbo.course SET status = -1 
+		WHERE dbo.course.courseid IN 
+		<foreach collection="list" index="index" item="item" open="("
+				separator="," close=")">
+				#{item}
+		</foreach>
+	</update>
+	<insert id="insertCourse">
+		INSERT INTO dbo.course 
+		(courseid, coursename, teacher, 
+		des, org_id, gmt_create, course_charging)
+		VALUES
+		(#{courseId}, #{basicInfo.courseName}, 
+		#{basicInfo.courseTeacher}, #{basicInfo.courseDescription}, 
+		#{orgId}, #{now}, #{basicInfo.chargingMode})	
+	</insert>
+	<insert id="insertCourseSort">
+		<foreach collection="courseSortArray" index="index" item="item">
+			INSERT INTO dbo.course_sort (course_id, sort_id)
+			VALUES (#{courseId}, #{item})
+		</foreach>
+	</insert>
+	<insert id="insertCoursePackage">
+		<foreach collection="packageList" index="index" item="item">
+			INSERT INTO dbo.course_package
+			(course_id, package_id, package_name, package_price, course_length, gmt_create)
+			VALUES
+			(#{courseId}, #{item.packageId}, #{item.packageName}, #{item.packagePrice}, 
+			#{item.courseLength}, #{now})
+		</foreach>
+	</insert>
+	<insert id="insertImg">
+		<foreach collection="pictureList" item="item">
+			INSERT INTO dbo.course_img
+			(course_id, img_id, img_name, img_order, gmt_create)
+			VALUES
+			(#{courseId}, #{item.imgId}, #{item.picture}, #{item.index}, #{now})
+		</foreach>
+	</insert>
+	<insert id="insertCourseVideo">
+		<foreach collection="videoList" item="item">
+			INSERT INTO dbo.course_video
+			(course_id, video_id, video_name, video_order, gmt_create)
+			VALUES
+			(#{courseId}, #{item.videoId}, #{item.video}, #{item.index}, #{now})
+		</foreach>
+	</insert>
+	<insert id="insertCourseTimetable">
+		<foreach collection="courseTimetableList" item="item">
+			INSERT INTO dbo.course_timetable
+			(course_id, chapter_id, chapter_number, chapter_name, chapter_date, 
+			chapter_begin, chapter_end, chapter_length, gmt_create)
+			VALUES
+			(#{courseId}, #{item.chapterId}, #{item.chapterNumber}, #{item.chapterName}, 
+			#{item.chapterDate}, #{item.chapterBegin}, #{item.chapterEnd}, #{item.chapterLength},
+			#{now})
+		</foreach>
+	</insert>
+	<update id="updateCourse">
+		UPDATE dbo.course 
+		SET coursename = #{basicInfoMap.courseName},
+		teacher = #{basicInfoMap.courseTeacher},
+		des = #{basicInfoMap.courseDescription},
+		gmt_modified = #{now}
+		WHERE dbo.course.courseid = #{courseId}
+	</update>
+	<update id="updatePackage">
+		<foreach collection="updatePackageList" item="item">
+			UPDATE dbo.course_package 
+			SET  package_name = #{item.packageName}, 
+			package_price = #{item.packagePrice}, 
+			course_length = #{item.courseLength}, 
+			gmt_modified = #{now}
+			WHERE package_id = #{item.packageId}
+		</foreach>
+	</update>
+	<update id="updatePackageStatus">
+		UPDATE dbo.course_package 
+		SET status = -1, 
+		gmt_modified = #{now}
+		WHERE dbo.course_package.package_id IN 
+		<foreach collection="deletePackageList" item="item" open="("
+				separator="," close=")">
+				#{item}
+		</foreach>
+	</update>
+	<update id="updateCourseTimetable">
+		<foreach collection="updateCourseTimetableList" item="item">
+			UPDATE dbo.course_timetable
+			SET chapter_name = #{item.chapterName}, 
+			chapter_date = #{item.chapterDate}, 
+			chapter_begin = #{item.chapterBegin}, 
+			chapter_end = #{item.chapterEnd}, 
+			chapter_length = #{item.chapterLength},
+			gmt_modified = #{now}
+			WHERE chapter_id = #{item.chapterId}
+		</foreach>
+	</update>
+	<update id="updateCourseTimetableStatus">
+		UPDATE dbo.course_timetable 
+		SET status = -1, 
+		gmt_modified = #{now}
+		WHERE dbo.course_timetable.chapter_id IN 
+		<foreach collection="deleteCourseTimetableList" item="item" open="("
+				separator="," close=")">
+				#{item}
+		</foreach>
+	</update>
+	<delete id="deleteImg">
+		DELETE FROM dbo.course_img WHERE course_id = #{courseId}
+	</delete>
+	<delete id="deleteCourseVideo">
+		DELETE FROM dbo.course_video WHERE course_id = #{courseId}
+	</delete>
+	<delete id="deleteCourseSort">
+		delete from course_sort where course_id = #{courseId}
+	</delete>
+</mapper>

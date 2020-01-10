@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.asxuexi.organization.dao.BillDao">
+	<sql id="condition">class_id=#{classId}</sql>
+	
+	<insert id="saveBill">
+		insert into bill_period (id,course_id,class_id,start_date,end_date,items,gmt_created) 
+			values (#{id},#{courseId},#{classId},#{startDate},#{endDate},#{items},#{now})
+	</insert>
+	
+	<select id="getAllBills" resultType="map">
+		select id,convert(VARCHAR(10),start_date,20) as start_date,convert(VARCHAR(10),end_date,20) as end_date from bill_period where class_id=#{classId} order by start_date
+	</select>
+	
+	<select id="getAllPeriods" resultType="map">
+		select id, convert(VARCHAR(10),start_date,20) as start_date,convert(VARCHAR(10),end_date,20) as end_date from bill_period where <include refid="condition"></include> order by start_date desc
+	</select>
+	
+	<select id="getItems" resultType="String">
+		select items from bill_period where id=#{id}
+	</select>
+	
+	<!--保存每个学生用户的账单信息  -->
+	<insert id="insertBillInfoOfUsers">
+		insert into dbo.user_bill (user_id,bill_id,status,bill_amount,gmt_created) values
+		<foreach collection="list" item="item" separator=",">
+		 (#{item.user_id},#{billId},0,#{item.totalTimes}*#{totalOfUnitPrice}+#{totalOfOncePrice},#{now})
+		</foreach>
+	</insert>
+	
+</mapper>

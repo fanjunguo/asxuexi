@@ -1,0 +1,108 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+input{
+	outline: none;
+}
+
+.order_info_body , .error{
+	width: 1180px;
+	margin: 20px auto;
+	font-size: 13px;
+	color: #666;
+}
+
+.error{
+	display: none;
+	height: 600px;
+	padding-top: 90px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.order-info{
+	margin-top: 30px;
+}
+
+.page-name{
+	display: inline-block;
+	font-size: 24px;
+	color:#aaa;
+}
+.span_container{
+	margin: 10px 15px 10px 60px;
+}
+
+.price{
+	float: right;
+    margin-right: 50px;
+}
+
+.price em{
+	font-size: 18px;
+	color: red;
+	font-style: normal;
+}
+.item_title{
+	font-size: 16px;
+}
+.red{
+	color:red;
+}
+
+.payment_icon{
+	margin: 10px 45px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.active{
+	border: 2px solid #f00;
+}
+
+.img_container{
+	padding-left: 20px;
+}
+
+.button_container{
+	border-top: 1px solid #f0f0f0;
+	margin-top: 20px;
+    height: 60px;
+}
+
+.submit{
+	float: right;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    cursor: pointer;
+    background: red;
+    line-height: 35px;
+    border-radius: 4px;
+    color: #fff;
+    margin: 20px 50px;
+}
+
+.payment-container{
+	display: none;
+}
+.modal-content{
+	width: 450px;
+}
+.modal-body{
+    justify-content: center;
+    display: flex;
+}
+.payment_result{
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 10px;
+    margin: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#payment_window{
+	top: 150px;
+}

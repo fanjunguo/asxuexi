@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	color:#000;
+	text-decoration: none;
+}
+a:link{
+	color: #000;
+	text-decoration: none;
+}
+.container {
+	/*border: 1px solid #e5e5e5;*/
+	box-shadow: none;
+	background-color: #FFF;
+	width: 930px;
+	max-height:650px;
+	float: left;
+}
+
+.container .title {
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #e5e5e5;
+	color: #6D6D6D;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.container .org_website_content {
+	padding: 5px 30px 15px;
+}
+
+.container .org_website_content .tab_nav {
+	height: 36px;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+/*.container .org_website_content .tab_nav .nav_ul {
+	height: 100%;
+	list-style-type: none;
+	overflow: hidden;
+}*/
+
+.container .org_website_content .tab_nav .nav_ul li {
+	float: left;
+	border-bottom: 4px;
+	padding: 12px 36px;
+	font-size: 16px;
+	color: #6D6D6D;
+}
+
+.container .org_website_content .tab_nav .nav_ul li.active {
+	color: #FC0E2A;
+	border-bottom: 4px solid #FC0E2A;
+	cursor: text;
+}
+
+.container .org_website_content .tab_nav .nav_ul li:hover:not(.active){
+	color: #FC0E2A;
+	border-bottom: 4px solid #FC0E2A;
+	cursor: pointer;
+}
+.model{
+	display:flex;
+}
+.model .page_li:nth-child(1){
+	width: 435px;
+	height:215px;
+}
+.page_li {
+	overflow: hidden;
+	list-style: none;
+	width: 50px;
+	height: 215px;
+}
+
+.page_screenshot {
+	position:relative;
+	width: 455px;
+	height: 215px;
+	border: 1px solid #ccc;
+	float: left;
+}
+
+.page_screenshot img {
+	width: 100%;
+	height: 100%;
+}
+
+.page_title {
+    position: absolute;
+    width: 20px;
+    text-align: center;
+    background: #9cdbf9;
+    border-radius: 0 5px 5px 0;
+    margin-top: 5px;
+    display: none;
+}
+.mybtn{
+	height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 90px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 14px;
+    margin: 5px;
+    visibility: hidden;
+    background: #fff;
+}
+.mybtn:hover{
+	background: red;
+	border-color: red;
+	color: #fff;
+}
+.tab_content {
+    border: 2px solid #ccc;
+}
+.tab_content:hover{
+	/*border-color: #f4d189;*/
+	background: #ccc;
+}
+
+/* 我的网站 查看和管理*/
+.entrance {
+    height: 110px;
+    width: 200px;
+    border: 2px solid #ccc;
+    float: left;
+    margin-right: 20px;
+    line-height: 110px;
+    display: flex;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.entrance:hover{
+	border-color: #ffd400;
+}
+.entrance .img{
+	height: 100px;
+    width: 100px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.template_container{
+	float: left;
+	display: none;
+}
+.modal-content {
+    width: 460px;
+}
+.modal-footer{
+	padding: 8px 15px;
+}

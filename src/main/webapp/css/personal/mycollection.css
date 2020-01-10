@@ -1,0 +1,257 @@
+
+*，div{
+	margin: 0px;
+	padding: 0px;
+	/*统一字体样式*/
+	font: 12px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+}
+img{
+	object-fit:contain;
+}
+#body{
+	margin: 0 auto;
+	background: #FFF;
+}
+/*标题部分*/
+#title{
+	width: 980px;
+	height: 48px;
+	padding-top: 10px;
+	border-bottom: 1px solid  #E5E5E5; 
+
+}
+#title_ul li{
+	font-size: 20px;
+	float: left;
+	width:105px;
+	margin:0 10px;
+	text-align: center;
+	list-style: none;
+	height: 38px;
+}
+#title_ul .active{
+	color: #FC0E2A;
+    border-bottom: 2px solid #FC0E2A;
+}
+/*课程收藏div*/
+#class_collection,#school_collection{
+	width: 980px;
+	/*height: 300px;*/
+	margin-top: 10px;
+}
+/*课程收藏筛选：全部课程/已失效 -start*/
+#classify{
+	width: 980px;
+	height: 30px;
+}
+
+#classify li{
+	font-size: 15px;
+	float: left;
+	width:80px;
+	margin:0 10px;
+	text-align: center;
+	list-style: none;
+	height: 20px;
+}
+#classify .active{
+	color: #FC0E2A;
+    border-bottom: 1px solid #FC0E2A;
+}
+/*课程收藏筛选：全部课程/已失效 -end*/
+/*收藏的课程*/
+#content{
+	width: 980px;
+	height: 200px;
+}
+.fav-item{
+	float: left;
+	list-style: none;
+	margin: 5px;
+	border: 1px;
+	text-align: center;
+	margin-bottom: 15px;
+	width: 210px;
+}
+
+
+
+
+/*div层叠显示*/
+.father_container{
+	position: relative;
+}
+.img_hover{	
+	left: 0px;
+	top: 0px;
+	position: relative;
+}
+.delete-btn{
+	width: 20px;
+	height:20px;
+}
+
+/*实现鼠标hover事件控制 删除键显示与隐藏*/
+.father_container .delete_hover{
+	right: 5px;
+	top: 0px;
+	position: absolute;
+	background-color: #666666;
+	color: #FFF;
+	opacity:0;
+	font-size: 15px;	
+	text-align: right;
+	font-weight:lighter;
+}
+.father_container:hover .delete_hover{
+	opacity:1;
+}
+/*实现鼠标hover事件控制 删除键显示与隐藏 -end*/
+
+.delete_hover:hover{
+	
+	background-color:#FC0E2A; 
+}
+/*确认是否删除*/
+.delete_confirm{
+	position: absolute;
+    top: 1px;
+    left: 5px;
+    background-color: #000;
+    height: 180px;
+    width: 200px;
+    opacity: 0.8;
+    display: none;
+}
+.txt{
+	height: 25px;
+    line-height: 25px;
+    color: #fff;
+    margin-bottom: 7px;
+    text-align: center;
+    margin-top: 50px;
+}
+.btn_yes,.org_del_yes{
+	border-color: #ff4200;
+    background-color: #ff4200;
+    color: #fff;
+    display: inline-block;
+    width: 52px;
+    height: 22px;
+    line-height: 22px;
+    border: #c5c5c5 1px solid;
+    cursor: pointer;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.btn_no,.org_del_no{
+	display: inline-block;
+    width: 52px;
+    height: 22px;
+    line-height: 22px;
+    border: #c5c5c5 1px solid;
+    background-color: #fff;
+    cursor: pointer;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+
+.lesson_img{
+	height: 130px;
+	width: 200px;
+	border:1px solid #e5e5e5;
+	display: inline-block;
+}
+
+.organization_name{
+	font-size: 12px;
+	color:#7F7F7F;
+}
+.current_price{
+	color:#FC0E2A;
+}
+.original_price{
+	font-size: 12px;
+	text-decoration: line-through;
+	color:#7F7F7F;
+}
+
+/*学校收藏*/
+
+.school_list{
+ border-bottom: 1px solid #E5E5E5;
+ list-style: none;
+ height: 190px;
+ margin-top: 20px;
+}
+.tel{
+	font-size: 13px;
+}
+.organization_info{
+	height: 130px;
+	width: 200px;
+	text-align: center;
+	margin-top: 7px;
+	margin-right: 20px;
+	float: left;
+}
+.organization_logo{
+	width: 70px;
+}
+
+.content_ul_active{
+	font-size: 25px;
+	color: #807f86;
+	text-align: center;
+    margin-top: 30px;
+}
+.address{
+	font-size: 14px;
+	color: #8a8a8a;
+}
+
+.school_edit{
+	float: right;
+	margin-right: 24px;
+	border-left: 2px solid #e8e5e5;
+    padding-left: 10px;
+    height: 160px;
+}
+
+.btn_edit_cancel,.btn_edit_more{
+	margin-top: 20px;
+    color: #737373;
+    height: 22px;
+    background-color: #e8e5e5;
+    font-weight: 100;
+    font-size: 14px;
+   /* border: none;*/
+   	border-color: #e8e5e5;
+   	border-radius: .25rem;
+   	line-height: 22px;
+   	width: 60px;
+    text-align: center;
+}
+.btn_edit_more a:hover,.btn_edit_cancel:hover{
+	color:#FC211B;
+	text-decoration: none;
+}
+.btn_edit_more a{
+	color: #737373;
+}
+
+.org_del_confirm{
+	width: 973px;
+	height: 189px;
+	background-color: gray;
+	position: absolute;
+	opacity: 0.8;
+	display: none;
+}
+.confirm_btn {
+    text-align: center;
+}
+.over_time{
+	background: #80808063;
+}

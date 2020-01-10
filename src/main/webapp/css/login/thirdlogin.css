@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'icomoon';
+	src: url('../../img/icon/icomoon/icomoon.eot');
+	src: url('../../img/icon/icomoon/icomoon.eot?#iefix')
+		format('embedded-opentype'),
+		url('../../img/icon/icomoon/icomoon.woff') format('woff'),
+		url('../../img/icon/icomoon/icomoon.ttf') format('truetype'),
+		url('../../img/icon/icomoon/icomoon.svg#icomoon') format('svg');
+}
+
+*, div {
+	margin: 0px;
+	padding: 0px;
+}
+
+.navigation {
+	position: absolute;
+	display: flex;
+	width: 500px;
+	justify-content: space-between;
+	top: 42px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-bottom: 0;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	color: #666;
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	border-top-left-radius: 4px;
+}
+
+#background_img {
+	padding-top: 91px;
+}
+
+.register_box {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.left_tab, .right_tab {
+	font-family: "icomoon";
+	flex: 1;
+	text-align: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+}
+
+.left_tab.selected, .right_tab.selected {
+	border-bottom: solid #FC0E2A;
+	color: #FC0E2A;
+}
+
+.login_box {
+	width: 500px;
+	height: 300px;
+	display: none;
+}
+
+.login_center {
+	padding: 20px 100px;
+}
+
+.span_wrap {
+	justify-content: flex-end;
+}
+
+.span_wrap span:not(.forget_password){
+	display: none;
+}
+
+.hidden_box {
+	display: none;
+}
+
+#confirmModal .modal-body span {
+	font-weight: 600;
+	color:#23527c;
+}

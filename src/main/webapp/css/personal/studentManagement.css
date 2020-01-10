@@ -1,0 +1,116 @@
+*{
+	margin: 0;
+	padding: 0;
+
+}
+input{
+	outline: none;
+}
+body{
+	font:12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;;
+}
+.button_bar {
+    height: 30px;
+    line-height: 30px;
+    margin: 10px 5px;
+}
+a.button {
+    font-size: 15px;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+a.button:hover{
+	text-decoration: none;
+	color: #337ab7;
+}
+
+.student_item{
+	width: 240px;
+    height: 100px;
+	border: 1px solid #ccc;
+	display: inline-block;
+    margin: 10px 5px;
+}
+.item_header{
+	height: 25px;
+	background: #ffcea4;
+}
+.item_header {
+    height: 20%;
+    background: #ffcea4;
+}
+
+.item_content {
+    padding-top: 15px;
+    height: 80%;
+    width: 100%;
+}
+
+.item_content span {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+}
+
+.item_header img{
+	width: 22px;
+    float: right;
+    cursor: pointer;
+}
+.btn_container{
+	display: flex;
+    justify-content: flex-end;
+}
+
+.student_edit_btn{
+	color: #337ab7;
+	cursor: pointer;
+	margin: 6px 5px 0 0;
+}
+.student_edit_btn:hover{
+	color: red;
+	text-decoration: none;
+}
+
+
+.tips{
+	font-size: 12px;
+	color: red;
+	line-height: 20px;
+}
+.letter_space{
+	letter-spacing: 3.3px;
+}
+.one_line{
+	margin-bottom: 20px;
+}
+
+.one_line input {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    outline: none;
+    padding-left: 7px;
+    height: 30px;
+}
+.new_student_form{
+	font-size: 13px;
+    margin: 25px 10px;
+}
+.no_data{
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+	color: #ccc;
+}
+.wrong_message{
+	color: red;
+}
+
+div#delele_content {
+    color: orange;
+    font-size: 17px;
+    text-align: center;
+    padding-top: 44px;
+}

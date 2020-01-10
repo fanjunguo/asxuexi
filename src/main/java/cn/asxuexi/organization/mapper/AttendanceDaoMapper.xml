@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.organization.dao.AttendanceDao">
+	<select id="getStuents" resultType="map">
+		select student_id,student_name,classhour_eachtime from [course_class_student] where class_id=#{classId} and dbo.course_class_student.status='1'
+	</select>
+	<select id="getClassList" resultType="map">
+		SELECT DISTINCT dbo.course_class_student.class_id, dbo.course_class_student.class_name, dbo.course.coursename, dbo.course_class_student.course_id
+		FROM  dbo.course INNER JOIN
+               dbo.course_class_student ON dbo.course.courseid = dbo.course_class_student.course_id INNER JOIN
+               dbo.org ON dbo.course.org_id = dbo.org.orgid
+		WHERE (dbo.org.orgid = #{orgId})
+	</select>
+	
+	<select id="isCheckedAttendance" resultType="map">
+		select distinct class_id from [dbo].[attendance] where date=#{now}
+	</select>
+	
+	<insert id="saveAttendance">
+		insert into attendance (student_id,class_id,date,attendance,gmt_create) values
+		<foreach item="item" collection="parseArray" separator=",">
+			(#{item.id},#{classId},#{today},#{item.val},#{now})
+		</foreach>
+	</insert>
+	
+
+
+	<select id="getLastBillDate" resultType="java.time.LocalDate">
+  		select max(end_date) from bill_period where class_id=#{classId}
+  	</select>
+  
+  	<select id="getTotalOfAttendanceDay" resultType="map">
+  		SELECT dbo.attendance.student_id, COUNT(dbo.attendance.student_id) AS totalTimes, dbo.course_class_student.student_name, 
+               dbo.course_class_student.classhour_eachtime,dbo.course_class_student.user_id
+		FROM  dbo.attendance INNER JOIN  dbo.course_class_student ON dbo.attendance.student_id = dbo.course_class_student.student_id
+		WHERE (dbo.attendance.attendance = '2') and dbo.attendance.class_id=#{classId} and dbo.course_class_student.status='1'
+		<if test="startDate!=null">
+		and dbo.attendance.date>=#{startDate}
+		</if>
+		<if test="endDate!=null">and dbo.attendance.date <![CDATA[<=]]> #{endDate}</if>
+		GROUP BY dbo.attendance.student_id, dbo.course_class_student.student_name, dbo.course_class_student.classhour_eachtime,dbo.course_class_student.user_id
+  	</select>
+  	
+  	<select id="getStarTimeOfClass" resultType="java.time.LocalDate">
+  		select min(date) from attendance where class_id=#{classId}
+  	</select>
+  	
+  	<select id="getAttendanceDetail" resultType="map">
+  		select CONVERT(VARCHAR(5),date,110) as date ,attendance from [attendance ]
+  		where student_id=#{studentId} and class_id=#{classId} and date>=#{startDate} and date<![CDATA[<=]]> #{endDate}
+  		order by date
+  	</select>
+  	
+  	<select id="getTheLastAttendanceDay" resultType="java.time.LocalDate">
+  		select max(date) from attendance where class_id=#{classId}
+  	</select>
+</mapper>

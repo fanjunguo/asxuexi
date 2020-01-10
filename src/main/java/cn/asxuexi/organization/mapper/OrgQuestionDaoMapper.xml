@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.organization.dao.OrgQuestionDao">
+	<select id="listOrgCourses" resultType="java.util.HashMap">
+		SELECT dbo.course.courseid AS course_id, 
+		dbo.course.coursename AS course_name
+		FROM dbo.course INNER JOIN dbo.org
+		ON dbo.course.org_id = dbo.org.orgid
+		WHERE dbo.course.org_id = #{orgId}
+		AND dbo.course.status != -1
+		ORDER BY dbo.course.gmt_create DESC
+	</select>
+	<select id="listOrgQuestions" resultType="java.util.HashMap">
+		SELECT dbo.org_ask_answer.id, dbo.org_ask_answer.question, 
+		dbo.org_ask_answer.answer, dbo.org_ask_answer.gmt_create, 
+		dbo.org_ask_answer.gmt_modified, dbo.org_ask_answer.stick,
+		dbo.[user].name, dbo.[user].photo, dbo.[user].id as userId 
+		FROM  dbo.org_ask_answer INNER JOIN dbo.[user] 
+		ON dbo.org_ask_answer.user_id = dbo.[user].id  
+		WHERE dbo.org_ask_answer.org_id = #{orgId}  
+		<if test="status == 2">
+			AND dbo.org_ask_answer.answer IS NOT NULL
+		</if>
+		<if test="status == 1">
+			AND dbo.org_ask_answer.answer IS NULL
+		</if>
+		ORDER BY dbo.org_ask_answer.stick DESC, 
+		dbo.org_ask_answer.gmt_modified DESC, 
+		dbo.org_ask_answer.gmt_create DESC
+	</select>
+	<select id="listCourseQuestions" resultType="java.util.HashMap">
+		SELECT dbo.course_ask_answer.id, dbo.course_ask_answer.question, 
+		dbo.course_ask_answer.answer, dbo.course_ask_answer.gmt_create, 
+		dbo.course_ask_answer.gmt_modified, dbo.course_ask_answer.stick,
+		dbo.[user].name, dbo.[user].photo, dbo.[user].id as userId 
+		FROM  dbo.course_ask_answer INNER JOIN dbo.[user] 
+		ON dbo.course_ask_answer.user_id = dbo.[user].id  
+		WHERE dbo.course_ask_answer.org_id = #{orgId}  
+		AND dbo.course_ask_answer.course_id = #{courseId}
+		<if test="status == 2">
+			AND dbo.course_ask_answer.answer IS NOT NULL
+		</if>
+		<if test="status == 1">
+			AND dbo.course_ask_answer.answer IS NULL
+		</if>
+		ORDER BY dbo.course_ask_answer.stick DESC, 
+		dbo.course_ask_answer.gmt_modified DESC, 
+		dbo.course_ask_answer.gmt_create DESC
+	</select>
+	<select id="listAllCourseQuestions" resultType="java.util.HashMap">
+		SELECT dbo.course_ask_answer.id, dbo.course_ask_answer.question, 
+		dbo.course_ask_answer.answer, dbo.course_ask_answer.gmt_create, 
+		dbo.course_ask_answer.gmt_modified, dbo.course_ask_answer.stick,
+		dbo.[user].name, dbo.[user].photo, dbo.[user].id as userId,
+		dbo.course.coursename 
+		FROM  dbo.course_ask_answer 
+		INNER JOIN dbo.[user] 
+		ON dbo.course_ask_answer.user_id = dbo.[user].id  
+		INNER JOIN dbo.course 
+		ON dbo.course_ask_answer.course_id = dbo.course.courseid 
+		WHERE dbo.course_ask_answer.org_id = #{orgId}  
+		AND dbo.course.status != -1
+		<if test="status == 2">
+			AND dbo.course_ask_answer.answer IS NOT NULL
+		</if>
+		<if test="status == 1">
+			AND dbo.course_ask_answer.answer IS NULL
+		</if>
+		ORDER BY dbo.course_ask_answer.stick DESC, 
+		dbo.course_ask_answer.gmt_modified DESC, 
+		dbo.course_ask_answer.gmt_create DESC
+	</select>
+	<update id="updateOrgAnswer">
+		UPDATE dbo.org_ask_answer
+		SET answer = #{answer}, 
+		gmt_modified = #{now}
+		WHERE id = #{questionId}
+		AND org_id = #{orgId}
+	</update>
+	<update id="updateCourseAnswer">
+		UPDATE dbo.course_ask_answer
+		SET answer = #{answer}, 
+		gmt_modified = #{now}
+		WHERE id = #{questionId}
+		AND org_id = #{orgId}
+	</update>
+	<update id="updateOrgStick">
+		UPDATE dbo.org_ask_answer
+		SET stick = #{stick}, 
+		gmt_modified = #{now}
+		WHERE id = #{questionId}
+		AND org_id = #{orgId}
+	</update>
+	<update id="updateCourseStick">
+		UPDATE dbo.course_ask_answer
+		SET stick = #{stick}, 
+		gmt_modified = #{now}
+		WHERE id = #{questionId}
+		AND org_id = #{orgId}
+	</update>
+</mapper>

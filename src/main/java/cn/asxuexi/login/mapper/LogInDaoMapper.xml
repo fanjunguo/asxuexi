@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.login.dao.LogInDao">
+	<select id="getUserId" resultType="java.util.HashMap">
+		select id from [user] where tel=#{tel} and password=#{password}
+	</select>
+	<select id="getOrgId" resultType="java.lang.String">
+		<!-- select orgid from [org] where user_id=#{userId} -->
+		<!-- 新增的分校的逻辑,所以登录的时候,默认登录主校 -->
+		select org_id as orgId from user_org where user_id=#{userId} and main_school = 1
+	</select>
+	
+	<select id="getIdAndPassword" resultType="java.util.HashMap">
+		select id,password from [user] where tel=#{tel}
+	</select>
+	<!--需要验证下,如果是参数是自定义对象的话,是否需要指定参数类型  -->
+	<update id="updatePassword">
+		update [user] SET password=#{password} where tel=#{tel}
+	</update>
+	<update id="updateClientId">
+		UPDATE [user] SET client_id=#{clientId} where [id]=#{userId}
+	</update>
+</mapper>

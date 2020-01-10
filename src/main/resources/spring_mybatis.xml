@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	  http://www.springframework.org/schema/beans 
+	  http://www.springframework.org/schema/beans/spring-beans.xsd
+	  http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd
+	  http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc.xsd
+      http://www.springframework.org/schema/tx
+      http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="myBatisDataSource" />
+	</bean>
+	<tx:annotation-driven
+		transaction-manager="txManager" />
+
+	<bean id="myBatisDataSource"
+		class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+		<property name="driverClassName"
+			value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url"
+			value="jdbc:sqlserver://47.104.178.216:1433;DatabaseName=asxuexi_dev" />
+		<property name="username" value="sa" />
+		<property name="password" value="59wk5yerPbUzBhJy" />
+		<!-- 初始化连接大小 -->
+		<property name="initialSize" value="0"></property>
+		<!-- 连接池最大数量 -->
+		<property name="maxActive" value="20"></property>
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="1"></property>
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="60000"></property>
+	</bean>
+
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="myBatisDataSource"></property>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:cn/asxuexi/*/mapper/*.xml</value>
+			</list>
+		</property>
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageInterceptor">
+					<property name="properties">
+						<value>
+							<!-- 可以配置一些参数 -->
+						</value>
+					</property>
+				</bean>
+			</array>
+		</property>
+			<!--配置别名:这样配置之后就可以只写类名,不用写完全限定名 -->
+		<property name="typeAliases" value="cn.asxuexi.tool.JsonData"></property>
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage"
+			value="cn.asxuexi.login.dao;cn.asxuexi.android.dao;
+			cn.asxuexi.organization.dao;cn.asxuexi.details.dao;cn.asxuexi.search.dao;cn.asxuexi.homepage.dao;cn.asxuexi.order.dao;
+			cn.asxuexi.person.dao;
+			cn.asxuexi.activity.dao"></property>
+		<property name="sqlSessionFactoryBeanName"
+			value="sqlSessionFactory"></property>
+	</bean>
+
+</beans>

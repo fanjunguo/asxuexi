@@ -1,0 +1,137 @@
+/* 最外围容器 */
+.allcontainer {
+	width: 980px;
+	margin: 0 auto;
+	background: #FFF;
+	/* border: 1px solid #e5e5e5; */
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.top{
+	margin:auto;
+	width: 930px;
+}
+/* 底部展示区域各个模块描述 */
+.orderDes {
+	margin:auto;
+	padding: 0px;
+	width: 930px;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: #f5f5f5;
+	border: 1px solid #e8e8e8;
+}
+
+.row {
+	margin: 0px;
+}
+
+.allDesCol {
+	text-align: center;
+	padding: 0px;
+}
+
+.allOrderCol {
+	/* text-align: center; */
+	padding: 0px;
+}
+
+#allOrders, #menu1, #menu2, #menu3, #menu4, #menu5 {
+	margin:auto;
+	margin-top: 15px;
+	width: 930px;
+	padding: 0px;
+}
+
+.orgName {
+	width: 930px;
+	padding-bottom: 10px;
+	background: #eaf8ff;
+	padding-top: 10px;
+	padding-left: 30px;
+}
+
+.courseContext {
+	width: 308px;
+	border-right: 1px solid #daf3ff;
+}
+
+.courseContext input {
+	float: left;
+	margin-top: 25px;
+	margin-left: 15px;
+}
+
+.courseContextAll .img {
+	width: 80px;
+	height: 80px;
+	float: left;
+	margin-top: 15px;
+}
+
+.courseContextAll .img img {
+	width: 80px;
+	height: 80px;
+}
+
+.courseContextText {
+	width: 210px;
+	float: left;
+	padding: 15px;
+	padding-bottom:5px;
+	padding-left:3px;
+	padding-right:3px;
+	text-align:left;
+}
+
+.courseContextText p {
+	word-wrap: break-word;
+	word-break: break-all;
+	OVERFLOW-y: auto;
+	margin: 0px;
+}
+
+.coursePrice {
+	width: 153px;
+	text-align: center;
+	padding-top: 15px;
+	 border-right: 1px solid #daf3ff;
+}
+
+.tradingStatus {
+	width: 228px;
+	text-align: center;
+	padding-top: 15px;
+	border-right: 1px solid #daf3ff;
+}
+
+.courseOperate {
+	width: 228px;
+	text-align: center;
+	padding-top: 15px;
+}
+
+#payButton {
+	margin: 0 auto;
+	border-radius: 6px;
+	background: red;
+	color: white;
+	padding: 6px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.courseOperate a {
+	position: relative;
+	top: 5px;
+}
+
+/* #menu1 .row, #menu2 .row, #menu3 .row ,#menu4 .row{
+	border: 1px solid #daf3ff;
+	margin-bottom: 15px;
+} */
+.tab-content .row{
+	border: 1px solid #daf3ff;
+	margin-bottom: 15px;
+}

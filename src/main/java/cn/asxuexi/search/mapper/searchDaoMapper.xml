@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.search.dao.SearchDao">
+	<select id="listSorts" resultType="java.util.HashMap">
+		SELECT [sort_id],[sort_parentid],[sort_name],[sort_grade] 
+		FROM [sort] 
+		ORDER BY [rows]
+	</select>
+	<select id="listAreas" resultType="java.util.HashMap">
+		SELECT [ID],[ParentId],[Name],[LevelType] 
+		FROM [areas] WHERE [ParentId]= #{cityId}
+	</select>
+</mapper>

@@ -1,0 +1,72 @@
+@charset "UTF-8";
+.paginator {
+	display: inline-block;
+	white-space: nowrap;
+	font-size: 18px;
+	line-height: 18px;
+	list-style: none;
+	width: 100%;
+	text-align: center;
+	 user-select:  none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-user-select:  none;
+	    -khtml-user-select:  none;
+	  /*早期浏览器*/
+	   
+}
+
+.paginator li {
+	display: inline;
+	vertical-align: top;
+	margin: 0 10px;
+}
+
+.page-link span, .previous span, .next span {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	min-width: 10px;
+	border: 1px solid #999;
+	text-align: center;
+	text-decoration: none;
+	color: #999;
+	height: 30px;
+	line-height: 30px;
+}
+
+.pagination-ellipsis span {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	min-width: 10px;
+	text-align: center;
+	text-decoration: none;
+	color: #999;
+	height: 30px;
+	line-height: 30px;
+}
+
+.page-link span:hover, .previous span:hover, .next span:hover {
+	border: 1px solid #ff6662;
+	color: #ff6662;
+	cursor: pointer;
+}
+
+.current span {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	min-width: 10px;
+	text-align: center;
+	text-decoration: none;
+	border: 0px;
+	background: #ff6662;
+	color: #fff;
+	cursor: pointer;
+	height: 30px;
+	line-height: 30px;
+}

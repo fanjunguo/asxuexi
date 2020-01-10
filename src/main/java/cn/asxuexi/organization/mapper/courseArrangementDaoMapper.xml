@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="cn.asxuexi.organization.dao.CourseArrangementDao">
+	<select id="listClasses" resultType="java.util.Map">
+		SELECT course_id, class_id, class_name, classhour_eachtime
+		FROM dbo.course_class
+		WHERE course_id = #{courseId}
+		ORDER BY gmt_create DESC
+	</select>
+	<select id="listCourseStudents" resultType="java.util.Map">
+		SELECT class_id, student_id, student_name, user_tel 
+		FROM dbo.course_class_student
+		WHERE course_id = #{courseId}
+		AND status != -1
+	</select>
+	<select id="listOrderStudents" resultType="java.util.Map">
+		SELECT [order].user_id,[order].course_id, [order].package_id, 
+		[order].student_id, [order].student_name, 
+		[order].order_status, [user].tel AS user_tel
+		FROM  [order] INNER JOIN [user] 
+		ON [order].user_id = [user].id
+		WHERE [order].course_id = #{courseId}
+		AND [order].order_status in (11,12,14,20,-1)
+	</select>
+	<insert id="insertCourseStudent">
+		<foreach collection="insertStudentList" item="item">
+			INSERT INTO dbo.course_class_student 
+			(course_id, student_id, student_name, package_id, user_tel, status, gmt_create,user_id)
+			VALUES
+			(#{item.course_id}, #{item.student_id}, #{item.student_name},
+			 #{item.package_id}, #{item.user_tel}, #{item.status}, #{now},#{item.user_id})
+		</foreach>
+	</insert>
+	<update id="updateCourseStudentStatus">
+		<foreach collection="updateStudentList" item="item">
+			UPDATE dbo.course_class_student 
+			SET course_class_student.status = -1, gmt_modified = #{now}
+			WHERE course_class_student.course_id = #{item.course_id}
+			AND course_class_student.student_id = #{item.student_id}
+		</foreach>
+	</update>
+	<select id="listStudents" resultType="java.util.Map">
+		SELECT dbo.course_class_student.class_id, dbo.course_class_student.class_name, 
+		dbo.course_class_student.student_id, dbo.course_class_student.student_name, 
+        dbo.course_class_student.package_id, dbo.course_package.package_name, 
+        dbo.course_package.package_price, dbo.course_package.course_length,
+        dbo.course_class_student.user_tel, dbo.[user].name AS user_name
+        FROM  dbo.course_class_student INNER JOIN dbo.course_package 
+        ON dbo.course_class_student.package_id = dbo.course_package.package_id
+        INNER JOIN dbo.[user]
+        ON dbo.course_class_student.user_tel = dbo.[user].tel
+		WHERE dbo.course_class_student.course_id = #{courseId} 
+		AND dbo.course_class_student.status != -1
+		<if test=" keyword != null and keyword != '' ">
+			AND (dbo.course_class_student.student_name = #{keyword} 
+			OR dbo.course_class_student.user_tel = #{keyword})
+		</if>
+		ORDER BY dbo.course_class_student.gmt_create DESC
+	</select>
+	<select id="listUndividedStudents" resultType="java.util.Map">
+		SELECT student_id, student_name, user_tel 
+        FROM  dbo.course_class_student
+        WHERE course_id = #{courseId} 
+        AND status = 0
+	</select>
+	<insert id="insertCourseClass">
+		INSERT INTO dbo.course_class
+		(course_id, class_id, class_name, classhour_eachtime, gmt_create)
+		VALUES
+		(#{courseId}, #{classId}, #{className}, #{classhourEachtime}, #{now})
+	</insert>
+	<update id="updateCourseStudentClass">
+		<foreach collection="studentIdList" item="item">
+			UPDATE dbo.course_class_student 
+			SET class_id = #{classId}, class_name = #{className},
+			classhour_eachtime = #{classhourEachtime}, status = #{status}, 
+			gmt_modified = #{now}
+			WHERE student_id = #{item}
+		</foreach>
+	</update>
+	<delete id="deleteCourseClass">
+		DELETE FROM dbo.course_class
+		WHERE course_id=#{courseId} AND class_id=#{classId}
+	</delete>
+	<select id="listUsers" resultType="java.util.Map">
+		SELECT name AS user_name, tel AS user_tel FROM [user]
+		WHERE tel = #{tel}
+	</select>
+	<insert id="insertStudent">
+		INSERT INTO dbo.course_class_student 
+		(course_id, class_id, class_name, student_id, student_name,
+		package_id, classhour_eachtime, gmt_create, status, user_tel,user_id)
+		VALUES
+		(#{courseId}, #{classId}, #{className}, #{studentId}, #{studentName},
+		0, #{classhourEachtime}, #{now}, #{status}, #{userTel},#{userId})
+	</insert>
+	
+	<select id="getUserId">
+		select id from [user] where tel=#{userTel}
+	</select>
+</mapper>

@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+body {
+	background: #ebebeb !important;
+	height: 900px;
+}
+#top {
+    background: #ebebeb !important;
+}
+#top div{
+    background: #ebebeb !important;
+}
+#org div {
+	background: #fff;
+}
+
+#org {
+	width: 1190px;
+	margin: 0 auto;
+	height: auto;
+	display: flex;
+}
+
+#org_left {
+	float: left;
+	width: 200px;
+	margin-right: 10px;
+	margin-top: 10px;
+	float: left;
+}
+
+#orgShowCenter {
+	margin: 5px auto;
+	width: 180px;
+	text-align: center;
+	font-size: 24px;
+	color: #1d191999;
+}
+
+#org_right {
+	margin-top: 10px;
+	float: left;
+	width: 950px;
+}
+.personal_list_father:hover{
+	color: #fc0e2e;
+    cursor: pointer;
+}
+.personal_list_children {
+	font-size: 20px;
+	display: block;
+}
+
+.personal_list_children span {
+	display: block;
+	margin: 20px auto;
+}
+.personal_list_children span:hover {
+	cursor: pointer;
+	color: #fc0e2e;
+}
+#orgShowCenter div {
+	margin: 33px auto;
+}
+
+.active {
+	color: #fc0e2e;
+}
+#courseInfoOrgName a:hover{
+	text-decoration: none!important;
+	color:#337ab7;
+}

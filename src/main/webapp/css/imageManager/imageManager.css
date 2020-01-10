@@ -1,0 +1,385 @@
+/*可点击的内容,变成小手*/
+.close_button,.panel_tab,.other_path,.file_itself,.del_img{
+	cursor: pointer;
+}
+input{
+	outline: none;
+}
+
+.bg{
+	background-color: gray;
+    opacity: 0.5;
+    width: 100%;
+    min-width: 1190px;
+    height: 100%;
+    min-height: 600px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10005;
+}
+.img_manager{
+    border: 1px solid #e6e6e6;
+	width: 1100px;
+	height: 600px;
+	top: calc((100vh - 600px) / 2);
+	left: calc((100vw - 1100px) / 2);
+	z-index: 10010;
+	position: fixed;
+	background-color: #fff;
+}
+/*面板头部 start*/
+.panel_title{
+	height: 60px;
+    line-height: 60px;
+    padding-left: 30px;
+    font-size: 18px;
+    position: relative;
+    border-bottom: 2px solid #e3e2e8;
+}
+
+.close_button{
+	position: absolute;
+	top: 12px;
+	right: 15px;
+	width:26px;
+	height: 26px;
+	background-image: url(../../img/icons/icon_close.png);
+}
+.close_button:hover{
+	background-image: url(../../img/icons/icon_close_hover.png);
+}
+
+/*面板头部 end*/
+/*左侧菜单start*/
+.panel_leftmenu{
+	width: 100px;
+	border-right: 1px solid #e3e2e8;
+	height: 466px;
+	float: left;
+}
+.panel_tab{
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+}
+.selected_manager{
+	border-top: 1px solid #e3e2e8;
+    border-bottom: 1px solid #e3e2e8;
+    border-left: 0;
+    border-right: 1px solid #fff;
+    margin-top: -1px;
+    margin-right: -1px;
+    color: red;
+}
+/*中间内容面板start*/
+.panel_center{
+	width: 990px;
+    height: calc(100% - 132px);
+    margin-left: 105px;
+    overflow-y:auto;
+}
+.center_btn{
+	float: left;
+    border: 1px solid #e6e6e6;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 10px;
+    margin-left: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.center_btn_group {
+    height: 60px;
+}
+
+.store_space{
+	float: right;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    border-bottom: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+}
+.center_content {
+    height: 20px;
+}
+/*文件路径*/
+.file_path {
+    font-size: 13px;
+    padding-left: 15px;
+}
+.other_path{
+	color: gray;
+	cursor: pointer;
+}
+.current_path{
+	color: #fd1b1bab;
+}
+/*图片(文件)展示区*/
+.file_display {
+    padding-top: 15px;
+}
+.file_container{
+	position: relative;
+	width: 102px;
+	height: 120px;
+	float: left;
+	margin-left: 20px;
+    margin-bottom: 20px;
+}
+/*文件夹样式  */
+.file_folder{
+	width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/*图片或视频的样式  */
+.file_itself , .invalid_file{
+	width: 100px;
+    height: 100px;
+    border: 1px solid #e6e6e6;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.file_name {
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    width: 100%;
+}
+/*footer*/
+.panel_footer{
+	height: 70px;
+    padding-left:calc((100% - 200px) / 2);
+    padding-top: 24px;
+    border-top: 1px solid #e6e6e6;
+}
+
+.YN_btn{
+	float: left;
+    border: 1px solid #e6e6e6;
+    height: 30px;
+    width: 80px;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 40px;
+    border-radius: 0.2em;
+}
+#preview_btn,.sure_btn{
+    cursor: not-allowed;
+    color: #e5e5e5;
+    background: white;    
+}
+.usable_status{
+    cursor: pointer!important;
+    color: white!important;
+    background: #ff6666!important;
+}
+/*.unusable_status{
+    cursor: 'not-allowed';
+    color: '#e5e5e5';
+    background: 'white';
+}*/
+#cancel_btn:hover,.center_btn:hover{
+    color: white;
+    background-color: #ff6666;
+    cursor: pointer;
+}
+/*图片被选中时的样式*/
+.file_selected {
+    border: 1px solid #ff6666;
+}
+.del_img_container{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-right: -3px;
+	margin-top: -2px;
+
+}
+.del_img{
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+}
+/*选项卡*/
+.tab_system,.tab_video,.tab_img{
+	display: none;
+}
+.tab_selected{
+	display: block;
+}
+/*视频播放面板*/
+.video_player{
+    width: 1000px;
+    height: 580px;
+    position: fixed;
+    z-index: 10050;
+    top: calc((100vh - 550px) / 2);;
+    left: calc((100vw - 1000px) / 2);
+    background-color: black;
+    border-radius: 5px;
+}
+.video_label{
+    width: 1000px;
+    height: 550px;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+.video_btn{
+    position: absolute;
+    background-image: url(../../img/icons/icon_close_hover.png);
+    top: 5px;
+    right: 5px;
+    height: 32px;
+    width: 32px;
+    z-index: 10100;
+    cursor: pointer;
+}
+/*新建文件夹名字输入面板*/
+.input_panel{
+    position: absolute;
+    width: 380px;
+    height: 180px;
+    top: 100px;
+    left: calc((100vw - 400px) / 2);
+    z-index: 10100;
+    background: white;
+    text-align: center;
+    border-radius: 2px;
+}
+span.attention {
+    color: red;
+    font-size: 10px;
+    float: right;
+    margin-right: 83px;
+}
+input.input_folderName{
+    width: 170px;
+    height: 30px;
+    margin-top: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding-left: 4px;
+}
+.createFolder_btn{
+    float: left;
+    border: 1px solid #e5e5e5;
+    margin-left: 30px;
+    width: 60px;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 28px;
+    line-height: 28px;
+}
+.createFolder_btn:hover{
+    background: #ff6666;
+    color: white;
+    border-color: transparent;
+}
+.createFolder_footer {
+    padding-left: 84px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 12px;
+}
+.createFolder_header {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 20px;
+}
+.createFolder_content {
+    height: 70px;
+    padding-top: 10px;
+}
+.delete_info{
+    font-size: 15px;
+    margin: 10px 30px 0 30px;
+}
+
+/*uploader*/
+.wu-example {
+    position: fixed;
+    padding: 45px 15px 15px;
+    margin: 15px 0;
+    background-color: #fafafa;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
+    border-color: #e5e5e5 #eee #eee;
+    border-style: solid;
+    border-width: 1px 0;
+    z-index: 10100;
+    width: 500px;
+    min-height: 275px;
+    top: 100px;
+    left: calc((100vw - 500px)/2);
+}
+.file-item{
+    margin: 0 auto;
+    
+}
+.uploader-list {
+    width: 100%;
+}
+.queueList{
+    text-align: center; 
+}
+.webuploader-pick{
+    top: 0px;
+    left: 0px;
+}
+.tips{
+    color: red;
+}
+.uploader_close{
+    width: 26px;
+    height: 26px;
+    float: right;
+    background-image: url(../../img/icons/icon_close.png);
+    margin-top: -40px;
+    cursor: pointer;
+}
+#fileName_input{
+    width: 300px;
+    text-align: center;
+    font-size: 16px;
+}
+.webuploader-pick-hover{
+    background: #00b7ee!important;
+}
+.save_file{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background: #00b7ee;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.save_file_unused{
+    background: #e5e5e5;
+    cursor: not-allowed;
+}
+.upload_edit_name{
+  width: 20px;
+  height: 20px;
+}
+.howToTransferVideo{
+    font-size: 12px;
+}
+.info{
+	font-size:16px;
+}
+
+.invalid{
+	color:red;
+}

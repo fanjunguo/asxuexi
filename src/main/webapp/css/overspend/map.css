@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+#container {
+	height: 95%;
+	width: 98%;
+	margin: 0 auto;
+}
+
+.panelColse {
+	background-image: url(../../img/icons/colse_707070.png);
+	width: 16px;
+	float: right;
+	height: 16px;
+	margin-top: 4px;
+	cursor: pointer;
+	margin-right: 4px;
+}
+.contaierPanel {
+    width: 900px;
+    height: 480px;
+    position: fixed;
+    top: 100px;
+    left:calc((100vw - 898px)/2);
+    background: #fff;
+}
+
+
+.cover {
+	width: 100vw;
+	height: 100%;
+	background: #666;
+	opacity: 0.5;
+	position: fixed;
+}

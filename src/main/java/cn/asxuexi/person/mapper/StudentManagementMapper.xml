@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.person.dao.StudentManagementDao">
+
+<resultMap type="cn.asxuexi.person.entity.StudentEntity" id="studentEntity">
+	<id property="id" column="student_id"/>
+	<!-- 联合主键如何对应 -->
+	<id property="userId" column="user_id"/>
+	<result property="name" column="student_name"/>
+	<result property="tel" column="tel"/>
+	<result property="gmt_created" column="gmt_created"/>
+	<result property="gmt_modefied" column="gmt_modefied"/>
+</resultMap>
+	<!--查询用户已保存的,所有的上课人信息  -->
+	<select id="getAllStudents" resultMap="studentEntity">
+		select * from student where user_id = #{userId} and status=1
+	</select>
+	
+	<!--新增上课人信息  -->
+	<insert id="insertNewStudent" parameterType="cn.asxuexi.person.entity.StudentEntity">
+		insert into student (student_id,user_id,student_name,tel,gmt_created,status) values 
+		(#{id},#{userId},#{name},#{tel},#{gmt_created},1)
+	</insert>
+	
+	<!--删除上课人  -->
+	<update id="deleteStudent">
+		update student set status = 0 where student_id=#{studentId}
+	</update>
+	
+	<!--修改上课人信息  -->
+	<update id="updateStudent" parameterType="cn.asxuexi.person.entity.StudentEntity">
+		update student set student_name=#{name} , tel=${tel} where student_id=#{id}
+	</update>
+</mapper>

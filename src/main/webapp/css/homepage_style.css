@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+*, div {
+	margin: 0px;
+	padding: 0px;
+}
+
+.basecontainer {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: #ebebeb;
+}
+
+#headercontainer, #bannercontainer, .items_container {
+	width: 1190px;
+	margin: 0px auto;
+}
+
+/*items_container  start*/
+.items_container{
+	display: flex;
+	flex-direction: column;
+}
+
+.items_container .item_container {
+	display: flex;
+	flex-direction: column;
+	width: 1190px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	margin-top: 20px;
+	background-color: #fff;
+}
+
+.item_container .item_nav .nav_ul {
+	height: 100%;
+	list-style-type: none;
+	overflow: hidden;
+	border-bottom: 1px solid #dee2e6;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	background-color: #f3f3f3;
+	margin:0;
+}
+
+.nav_ul li {
+	float: left;
+}
+
+.nav_ul li a {
+	display: block;
+	color: #666;
+	text-align: center;
+	padding: 11px;
+	text-decoration: none;
+	letter-spacing: 1px;
+}
+
+.nav_ul li a.item_name {
+	font-weight: 550;
+	letter-spacing: 2px;
+}
+
+.nav_ul li a:hover:not(.disabled){
+	background-color:#ddd;
+	cursor:pointer;
+}
+
+.nav_ul li a.active {
+	color: #FC0E2A;
+	background-color: #ddd;
+}
+
+.items_container .item_container .tab_content{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.items_container .item_container .tab_content:not(:nth-child(2)){
+	display: none;
+}
+
+.tab_content .empty_tab{
+	padding: 37px;
+	width: 100%;
+	text-align: center;
+	color: #ccc;
+}
+
+.tab_content .tab_card {
+	width: 25%;
+	box-sizing: border-box;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.tab_card:hover {
+	background: #ddd;
+	transition: background-color .5s;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+.tab_card:link{
+	text-decoration: none;
+}
+
+.tab_card:visited{
+	text-decoration: none;
+}
+
+.tab_card .course_img{
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	background: #fff;
+}
+
+.tab_card .course_img img, .tab_card .org_img img {
+	width: 100%;
+	height: 160px;
+	border-radius: 4px;
+	object-fit:contain;
+}
+
+.org_img{
+	border: 1px solid #ddd;
+	background: #fff;
+}
+
+.tab_card .course_info, .tab_card .org_info {
+	width: 100%;
+	border-radius: 4px;
+}
+
+.tab_card .course_info{
+	display: flex;
+	flex-direction: column;
+	padding: 5px;
+}
+
+.tab_card .course_info .org_name {
+	font-size: 14px;
+	color: #999;
+	padding: 5px 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.tab_card .course_info .org_name a{
+	color: #999;
+}
+
+.tab_card .course_info .course_name a:hover, 
+	.tab_card .org_info .org_name:hover,
+	.tab_card .course_info .org_name a:hover
+	{
+	color: #FC0E2A;
+	text-decoration: none;
+}
+
+.tab_card .course_info .course_name {
+	font-size: 17px;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	letter-spacing: 1px;
+	font-weight: 600;
+	padding: 5px 0;
+}
+
+.tab_card .course_info .course_name a{
+	color: #333;
+}
+
+.tab_card .org_info .org_name {
+	color: #333;
+	font-size: 17px;
+	font-weight: 600;
+	line-height: 50px;
+	width: 100%;
+	height: 45px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	letter-spacing: 2px;
+}
+
+.tab_card .org_info .org_area {
+	float: left;
+	font-size: 14px;
+	color: #999;
+	height: 25px;
+	line-height: 25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.tab_card .org_info .org_validation {
+	float: right;
+	font-size: 12px;
+	height: 25px;
+	line-height: 25px;
+	color: #F60;
+}
+
+.tab_card .org_info .org_validation img {
+	width: 25px;
+	height: 25px;
+	vertical-align: top;
+}
+
+.course_price {
+	padding-top: 5px;
+}
+
+.course_price .price_type{
+	font-size: 16px;
+	color: #F60;
+	margin-right: 6px;
+	letter-spacing: -.8px;
+}
+
+.course_price .price_symbol {
+	font-size: 17px;
+	color: #F60;
+	font-weight: 500;
+}
+
+.course_price .price_value {
+	font-size: 17px;
+	color: #F60;
+	vertical-align: bottom;
+}
+
+.course_price .price_original {
+	font-size: 12px;
+	color: #999;
+	text-decoration: line-through;
+	margin-left: 5px;
+	vertical-align: text-bottom;
+}
+/*items_container  end*/

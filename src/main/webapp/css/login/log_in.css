@@ -1,0 +1,278 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'icomoon';
+	src: url('../../img/icon/icomoon/icomoon.eot');
+	src: url('../../img/icon/icomoon/icomoon.eot?#iefix')
+		format('embedded-opentype'),
+		url('../../img/icon/icomoon/icomoon.woff') format('woff'),
+		url('../../img/icon/icomoon/icomoon.ttf') format('truetype'),
+		url('../../img/icon/icomoon/icomoon.svg#icomoon') format('svg');
+}
+
+*, div {
+	margin: 0px;
+	padding: 0px;
+}
+
+.base_container {
+	background-color: #e5e5e5;
+}
+/*header*/
+#header_parent {
+	width: 100%;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+}
+
+#header {
+	width: 1190px;
+	padding: 10px 0;
+	display: flex;
+}
+
+#header #logo img {
+	height: 80px;
+	width: 240px;
+}
+
+#slogen {
+	color: #666;
+	font-size: 20px;
+	padding: 4px 20px;
+	align-self: flex-end;
+}
+
+#background_img {
+	height: 600px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-image: url(../../img/login/background.jpg);
+	display: flex;
+	padding: 126px 0;
+	justify-content: center;
+}
+
+.box_wrap {
+	width: 1190px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.login_box {
+	border: 1px solid #CCC;
+	border-radius: 4px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	width: 360px;
+}
+.hidden_box{
+	display:none;
+}
+.login_top {
+	border-bottom: 1px dotted #ccc;
+	background-color: #f5f5f5;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	padding: 6px 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.login_top .login_title {
+	color: #666;
+	font-size: 19px;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
+.login_top .login_tip {
+	color: #666;
+	align-self: center;
+}
+
+.login_top .login_tip a {
+	text-decoration: none;
+	cursor: pointer;
+	padding: 1px 2px;
+	padding-right: 0px;
+}
+
+.login_top .login_tip a:hover {
+	color: #FC0E2A;
+	text-decoration: none;
+}
+
+.login_center {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: space-around;
+	padding: 10px 60px;
+}
+
+.input_wrap {
+	position: relative;
+}
+
+.input_text {
+	padding-left: 40px;
+	padding-right: 12px;
+	width: 100%;
+	height: 36px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+}
+
+.input_button {
+	width: 100%;
+	height: 36px;
+	border-radius: 4px;
+	border: 1px solid #FC0E2A;
+	font-size: 18px;
+	color: white;
+	background-color: #FC0E2A;
+}
+
+.warning_message {
+	display: none;
+	position: absolute;
+	font-size: 12px;
+	color: red;
+	padding-top: 1px;
+	left: 20px;
+	top: 35px;
+}
+
+.warning_message::before {
+	content: "\e9e6";
+	font-family: "icomoon";
+	font-size: 11px;
+	padding: 1px;
+	position: absolute;
+	left: -15px;
+}
+
+.show_password {
+	font-family: "icomoon";
+	position: absolute;
+	right: 9px;
+	top: 9px;
+	color: #ccc;
+	cursor: pointer;
+}
+
+.show_password.selected {
+	color: #FC0E2A;
+}
+
+.telcode_wrap {
+	display: flex;
+}
+
+.input_wrap::before {
+	position: absolute;
+	font-family: "icomoon";
+	font-size: 18px;
+	color: #ccc;
+	top: 6px;
+	left: 12px;
+}
+
+.tel_wrap::before {
+	content: "\e959";
+}
+
+.password_wrap::before {
+	content: "\e98f";
+	font-size: 19px;
+	left: 15px;
+	top: 5px;
+}
+
+.span_wrap {
+	display: flex;
+	justify-content: space-between;
+	padding-left: 18px;
+	color: #969696;
+	cursor: default;
+	font-size: 12px;
+}
+
+.notice_wrap {
+	font-family: "icomoon";
+	display: none;
+	color: #FC0E2A;
+	cursor: default;
+	font-size: 12px;
+	text-align: center;
+}
+
+.remember_check {
+	position: absolute;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	height: 12px;
+	width: 12px;
+	left: 2px;
+	top: 1.5px;
+	cursor: pointer;
+	height: 12px;
+}
+
+.remember_check.selected {
+	border-color: #FC0E2A;
+	background-color: #FC0E2A;
+	color: #fff;
+	font-family: icomoon;
+	font-size: 9px;
+	padding-left: 1px;
+}
+
+.forget_password a {
+	cursor: pointer;
+}
+
+.forget_password a:hover {
+	color: #FC0E2A;
+	text-decoration: none;
+}
+
+.login_bottom {
+	padding-bottom: 15px;
+	text-align: center;
+	font-size: 12px;
+	color: #969696;
+}
+
+.third_login img {
+	width: 24px;
+	height: 24px;
+}
+
+#quick_login_box .modal-dialog{
+	width:400px;
+}
+
+#quick_login_box .modal-content{
+	width:400px;
+}
+
+#quick_login_box .modal-body{
+	padding: 18px;
+}
+
+#quick_login_box .login_box{
+	height:350px;
+}
+
+#quick_login_box .login_top{
+	justify-content: center;
+}
+
+#quick_login_box .span_wrap{
+	padding-left: 0;
+}
+

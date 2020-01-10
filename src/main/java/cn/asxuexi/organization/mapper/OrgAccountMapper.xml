@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.organization.dao.OrgAccountDao">
+	<!-- <resultMap type="cn.asxuexi.organization.entity.CashFlowEntity" id="cashFlow">
+		<id column="id" property="id"/>
+		<result column="org_id" property="orgId"/>
+	</resultMap> -->
+	
+<!--创建机构账户记录  -->
+	<insert id="createOrgAccount">
+		insert into org_account (org_id,gmt_created) values (#{orgId}, getdate())
+	</insert>
+<!--查询账户信息  -->
+	<select id="getAccountInfo" resultType="JsonData">
+		select org_id,convert(decimal(9,2),amount_entering) as amount_entering,convert(decimal(9,2),deposit) as deposit,amount_usable from org_account where org_id=#{orgId}
+	</select>
+	
+<!--保存提现申请  -->
+	<insert id="insertCashOutApplication">
+		insert into cash_out_application (id,org_id,amount,card_number,owner_name,bank_code,bank_name,gmt_created) 
+		values (#{id},#{orgId},#{amount},#{cardNumber},#{ownerName},#{bankCode},#{bankName},#{gmt_created})
+	</insert>
+	
+<!--更新机构账户(只更新单个字段,更新的字段由传入的参数决定) -->
+	<update id="updateAccountInfo">
+		update 	org_account set ${fieldName}=${fieldName}+(#{amountOfChange}) , gmt_modified=getdate()
+		where org_id= #{orgId}
+	</update>
+
+<!-- 同时更新机构账户入账中金额和可用金额.用户确认付款给机构时,入账中金额转为可用金额 -->
+	<update id="updateAccountOfUsableAndEnterring">
+		update org_account set amount_entering=amount_entering- #{amount}, amount_usable = amount_usable + #{amount}
+		where org_id=#{orgId}
+	</update>
+
+</mapper>

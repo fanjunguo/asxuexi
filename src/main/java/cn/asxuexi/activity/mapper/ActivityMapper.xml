@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.activity.dao.ActivityDao">
+
+<!--根据id,查询广告信息  -->
+	<select id="getAdInfo" resultType="JsonData">
+		select *  from ad where id=#{id}
+	</select>
+	
+<!--提交信息  -->
+	<insert id="submit">
+		insert into activity_guest (activity_id,name,tel,gmt_created) values (#{id},#{name},#{tel},#{now})
+	</insert>
+</mapper>

@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #EBEBEB;
+}
+
+.content {
+	width: 1190px;
+	margin: 0 auto;
+	display: flex;
+	border-radius: 4px;
+	margin-top: 15px;
+}
+
+.left_content {
+	width: 210px;
+	padding-right: 10px;
+}
+
+.information_content {
+	border: 1px solid #E5E5E5;
+	border-radius: 4px;
+	background-color: #fff;
+	padding: 20px;
+}
+
+.personal_photo {
+	display: flex;
+	flex-direction: column;
+}
+
+.personal_photo img {
+	width: 120px;
+	border: 1px solid #E5E5E5;
+	overflow: hidden;
+	height: 120px;
+	align-self: center;
+	border-radius: 100%;
+}
+
+.menu_content {
+	border: 1px solid #E5E5E5;
+	border-radius: 4px;
+	background-color: #fff;
+	padding: 30px;
+	min-height: 290px;
+	margin-top: 10px;
+}
+
+.menu_item_empty {
+	min-height: 35px;
+	background-color: #F8F8F8;
+	margin-bottom: 15px;
+}
+
+.menu_child_item_empty {
+	min-height: 35px;
+	background-color: #F8F8F8;
+	margin: 0 15px 15px 15px;
+}
+
+.menu_item {
+	padding: 10px 0;
+	position: relative;
+}
+
+.menu_item>a {
+	font-size: 20px;
+	color: #222;
+}
+
+.menu_item>a:hover {
+	color: #FC0E2A;
+	text-decoration: none;
+}
+
+.unread_message_count {
+	display: none;
+	position: absolute;
+	top: 18px;
+	right: 0;
+	width: 25px;
+	height: 15px;
+	border-radius: 10px;
+	background: red;
+	color: white;
+	font-size: 12px;
+	text-align: center;
+	line-height: 15px;
+}
+
+.menu_child_item {
+	position: relative;
+	padding: 10px 10px 0 10px;
+}
+
+.menu_child_item::after {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	top: 18.5px;
+	right: 10px;
+	width: 5px;
+	height: 5px;
+	border-right: 1px solid #222;
+	border-top: 1px solid #222;
+	transform: rotate(45deg);
+}
+
+.menu_child_item>a {
+	font-size: 15px;
+	color: #666;
+}
+
+.menu_child_item>a:hover {
+	color: #FC0E2A;
+	text-decoration: none;
+}
+
+.qrcode_content {
+	border: 1px solid #E5E5E5;
+	border-radius: 4px;
+	background-color: #fff;
+	padding: 20px 30px;
+	margin-top: 10px;
+}
+
+.qrcode_box {
+	display: flex;
+	flex-direction: column;
+}
+
+.qrcode {
+	width: 90px;
+	height: 90px;
+	align-self: center;
+}
+
+.qrcode_divide {
+	border: 0.5px solid #f0efef;
+	margin: 15px 0;
+}
+
+.qrcode_description {
+	text-align: center;
+	font-size: 14px;
+	color: #222;
+	font-weight: 500;
+	margin: 0;
+}
+
+.right_content {
+	width: 990px;
+	border: 1px solid #E5E5E5;
+	border-radius: 4px;
+	background-color: #fff;
+	padding: 5px 10px;
+}

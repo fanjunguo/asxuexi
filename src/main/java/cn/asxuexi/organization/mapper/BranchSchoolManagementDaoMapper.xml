@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.asxuexi.organization.dao.BranchSchoolManagementDao">
+<!--通用字段,声明sql片段  -->
+<sql id="fields">orgid,orgname,localid,address,head,tel,lng,lat,des,room_number,</sql>
+
+<!-- 创建分校,默认状态未开通 -->
+	<insert id="createBranchSchool" parameterType="cn.asxuexi.orgInfo.entity.OrgInfo">
+		insert into org (<include refid="fields"></include>  gmt_create,status) values 
+		(#{orgId},#{orgName},#{localId},#{orgAddress},#{orgLegalPerson},#{orgtel},#{lng},#{lat},#{orgDes},#{roomNumber},getdate(),0)
+	</insert>
+	
+	<!-- 查询所有学校名单 -->
+	<select id="getBranchSchoolList" resultType="map">
+		select dbo.user_org.org_id as orgId, dbo.user_org.main_school as isMainSchool, dbo.org.orgname as orgName ,
+			dbo.org.status from dbo.user_org 
+		inner join 
+		dbo.org on dbo.user_org.org_id = dbo.org.orgid
+		where dbo.user_org.user_id=#{userId}
+	</select>
+	
+	<update id="updateSchoolInfo" parameterType="cn.asxuexi.orgInfo.entity.OrgInfo">
+		update org set orgname=#{orgName},localid=#{localId},address=#{orgAddress},head=#{orgLegalPerson},
+		tel=#{orgtel},lng=#{lng},lat=#{lat},des=#{orgDes},room_number=#{roomNumber},gmt_modified=getdate() 
+		where orgid=#{orgId}
+	</update>
+	
+	<update id="updateSchoolStatus">
+		update org set status=#{status} where orgid=#{orgId}
+	</update>
+</mapper> 
