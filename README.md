@@ -1,3 +1,2 @@
-测试pull request
-
-我把项目fork到了自己的仓库
+这是一个web网站项目,相当于自己学习做了一个网站
+用到的技术:springmvc、mybatis.前端有主要是js和jquery
