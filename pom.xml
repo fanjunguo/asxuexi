@@ -24,7 +24,7 @@
 	</repositories>
 	<properties>
 		<!-- 统一声明spring版本号，在添加依赖时引用该属性，方便后期更改 -->
-		<spring.version>4.3.22.RELEASE</spring.version>
+		<spring.version>5.2.20.RELEASE</spring.version>
 	</properties>
 	<dependencies>
 		<dependency>
